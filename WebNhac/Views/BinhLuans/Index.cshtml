@@ -1,0 +1,123 @@
+﻿@using Music_pv.Models;
+@model List<BinhLuan>
+
+
+<center>
+    <ul class="" style="width: 100%">
+        <li class="list-group-item" style="background-color: #4267b2; color: white; font-weight: bold">Bình luận</li>
+        <li class="list-group-item" style="width:100%">
+            <div class="">
+                @using (Html.BeginForm("ThemBinhLuan", "BinhLuans", FormMethod.Post))
+                {
+                    <img src="~/Image/images.png" style="border-radius:100%;width:100px; height:100px; border:1px solid black; float: left" />
+
+                    if (Session["flag"] != null)
+                    {
+                        <input type="text" name="NoiDung" style="width: 90%; height: 50px; float: right;margin-top: 2%" placeholder="Add comment..." class="form-control" id="ktratext" />
+                        <input type="submit" value="Bình luận" class="btn btn-danger" style="margin-top: 2%;float: left;margin-left: 1%" />
+                    }
+                    else
+                    {
+                        <a href="#small-dialog2" class="play-icon popup-with-zoom-anim btn btn-danger" style="margin-top: 2%;float: left;margin-left: 1%" id="btnSub">Bình luận</a>
+                    }
+                }
+                <br />
+                <table class="table">
+
+                    @foreach (var itemcmt in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div style="margin-left: 3%" class="alert alert-success">
+                                    <img src="~/Image/images.png" style="border-radius:100%;width:40px; height:40px; border:1px solid black; float: left" />
+                                    <span style="margin-left: 15px;font-size: 16px;color: green; font-weight: bold">@itemcmt.User.HoTen</span><br />
+                                    <span style="font-size: 15px; margin-left:10px;color: black">@itemcmt.NoiDung</span>
+                                    <span style="margin-left: 10px; float: right">@itemcmt.NgayDang</span><br />
+                                    <a data-toggle="collapse" data-target="#@itemcmt.IDBinhLuan" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="color: black; font-weight:bold;float: right;font-size: 10px;color: white" class="btn btn-danger">VIEW REPLY</a>
+
+                                </div>
+                                <div class="pos-f-t">
+                                    <div class="collapse" id="@itemcmt.IDBinhLuan">
+                                        @foreach (var itemrep in itemcmt.TraLoiBinhLuans)
+                                        {
+                                            <div style="margin-left: 10%" class="alert alert-success">
+                                                <img src="~/Image/images.png" style="border-radius:100%;width:40px; height:40px; border:1px solid black; float: left" />
+                                                <span style="margin-left: 15px;font-size: 16px;color: green; font-weight: bold">@itemrep.User.HoTen</span><br />
+                                                <span style="margin-left: 15px;font-size: 16px;color: black;">@itemrep.NoiDung</span><br />
+                                                <span style="margin-left: 10px; float: right">@itemrep.NgayDang</span>
+                                            </div>
+                                        }
+                                        <br />
+                                        @using (Html.BeginForm("ThemTraLoi", "BinhLuans", FormMethod.Post))
+                                        {
+                                            <input type="hidden" name="IDBinhLuan" value="@itemcmt.IDBinhLuan" />
+                                            <input type="text" name="NoiDung" style="margin-left:5%; width: 96%; height: 50px" min="50" required class="form-control" placeholder="Reply..." id="ktratl" />
+                                            if (Session["flag"] != null)
+                                            {
+                                                <input type="submit" value="" class="" style="margin-top: 2%;float: left;margin-left: 1%;background-color: white; border: 0px solid white" id=" btntl" />
+                                            }
+                                            else
+                                            {
+                                                <a href="#" id="btntl"></a>
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </li>
+    </ul>
+</center>
+<style>
+    .card-inner {
+        margin-left: 4rem;
+    }
+</style>
+<script>
+    $("#ktratext").keypress(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnSub").click();
+        }
+    });
+    $("#btnSub").click(function () { alert("Vui lòng đăng nhập trước khi bình luận"); });
+
+    $("#ktratl").keypress(function (event) {
+        if (event.keyCode == 13) {
+            $("#btntl").click();
+        }
+    });
+    $("#btntl").click(function () { alert("Vui lòng đăng nhập trước khi bình luận"); });
+</script>
+
+<div id="small-dialog2" class="mfp-hide">
+    <h3>Đăng nhập</h3>
+    <div class="social-sits">
+        <div class="facebook-button">
+            <a href="#">Đăng nhập bằng Facebook</a>
+        </div>
+        <div class="chrome-button">
+            <a href="#">Đăng nhập bằng Google &nbsp;&nbsp;&nbsp;</a>
+        </div>
+        <div class="button-bottom">
+            <p>Bạn chưa có tài khoản? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Đăng ký</a></p>
+        </div>
+    </div>
+    <div class="signup">
+        <form action="@Url.Action("DangNhap", "DangNhap")" method="post">
+            <input type="text" class="email" placeholder="Tên đăng nhập" name="txtTaiKhoan" />
+            <input type="password" class="email" placeholder="Mật khẩu" name="txtMatKhau" />
+            <button class="btn btn-danger">ĐĂNG NHẬP</button>
+            <div class="forgot">
+                <a href="#">Quên mật khẩu ?</a>
+            </div>
+        </form>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

@@ -1,0 +1,37 @@
+﻿@using Music_pv.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<YeuThich>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+    <div class="recommended-grids english-grid alert alert-success">
+        <div class="recommended-info">
+            <div class="heading">
+                <h3 style="font-weight: bold">Yêu thích</h3>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        @if (Session["flag"] != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-3 resent-grid recommended-grid show-video-grid">
+                    <div class="resent-grid-img recommended-grid-img">
+                        <a href="@Url.Action("XemChiTiet", "HienThi", new { @manhac = item.IDNhac })"><img src="@Url.Content("~/Image/BaiHat/" + item.DSNhac.HinhBaiHat)" alt="" style="width: 100%; height: 120px" /></a>
+                    </div>
+                    <div class="resent-grid-info recommended-grid-info">
+                        <h5><a href="@Url.Action("XemChiTiet", "HienThi", new { @manhac = item.IDNhac })" class="title">@item.DSNhac.TenBaiHat</a></h5>
+                        <p class="author"><a href="#" class="author">@item.DSNhac.DSCaSy.TenCaSy</a></p>
+                        <p class="views">@item.DSNhac.LuotNghe Lượt nghe</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h3>Vui lòng đăng nhập </h3>
+        }
+        <div class="clearfix"> </div>
+    </div>

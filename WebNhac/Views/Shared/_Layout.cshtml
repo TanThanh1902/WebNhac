@@ -1,0 +1,234 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Mucsic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap -->
+    <link href="~/Content/web/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- //bootstrap -->
+    <link href="~/Content/web/css/dashboard.css" rel="stylesheet">
+    <!-- Custom Theme files -->
+    <link href="~/Content/web/css/style.css" rel='stylesheet' type='text/css' media="all" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!--start-smoth-scrolling-->
+    <!-- fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <link href="~/Content/Slider.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/HienThi/Index"><h1 style="color: red; font-weight: bold"><i class="fa fa-music"></i>Phương Vy</h1></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <div class="top-search">
+                    <form class="navbar-form navbar-right" action="@Url.Action("TimKiem", "HienThi")">
+                        <input type="text" class="form-control" placeholder="Nhập tên bài hát của bạn..." name="tukhoa">
+                        <input type="submit" value=" ">
+                    </form>
+                </div>
+                @Html.Action("CongCu", "HienThi")
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </nav>
+    <div class="col-sm-3 col-md-2 sidebar">
+        <div class="top-navigation">
+            <div class="t-menu">MENU</div>
+            <div class="t-img">
+                <img src="~/Content/web/images/lines.png" alt="" />
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="drop-navigation drop-navigation">
+            <ul class="nav nav-sidebar">
+                <li><a href="/HienThi/Index" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+                <li><a href="@Url.Action("Index", "BoSuuTap")"><span class="fa fa-heart" aria-hidden="true"></span><b style="margin-left: 15%">&nbsp;</b>Yêu thích</a></li>
+                <li><a href="@Url.Action("BaiHatNgheNhieu", "DanhMucs")" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Bài hát nghe nhiều</a></li>
+                <li><a href="@Url.Action("DSCaSy", "DanhMucs")" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>Danh sách ca sỹ</a></li>
+                <li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>Danh sách thể loại<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+                <ul class="cl-effect-2">
+                    @Html.Action("DSTheLoaiN", "DanhMucs")
+                </ul>
+                <!-- script-for-menu -->
+                <script>
+                    $("li a.menu1").click(function () {
+                        $("ul.cl-effect-2").slideToggle(300, function () {
+                            // Animation complete.
+                        });
+                    });
+                </script>
+                <li><a href="#" class="menu"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>Top 100<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+                <ul class="cl-effect-1">
+                    @Html.Action("DSQuocGiaN", "DanhMucs")
+                </ul>
+                <!-- script-for-menu -->
+                <script>
+                    $("li a.menu").click(function () {
+                        $("ul.cl-effect-1").slideToggle(300, function () {
+                            // Animation complete.
+                        });
+                    });
+                </script>
+
+                <li><a href="news.html" class="news-icon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Liên hệ</a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $(".top-navigation").click(function () {
+                    $(".drop-navigation").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <div class="side-bottom">
+                <div class="side-bottom-icons">
+                    <ul class="nav2">
+                        <li><a href="#" class="facebook"> </a></li>
+                        <li><a href="#" class="facebook twitter"> </a></li>
+                        <li><a href="#" class="facebook chrome"> </a></li>
+                        <li><a href="#" class="facebook dribbble"> </a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p>Bản quyền thuộc Phương Vy -  &copy; 2019</p>
+                    <p>WebSite Học Tập</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="show-top-grids">
+            <div class="col-sm-9 show-grid-left main-grids">
+                <div>
+                    @RenderBody()
+                </div>
+                <div class="recommended">
+                    @Html.Action("NgheGiHomNay", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("BaiHatNgheNhieu", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("DanhSachCaSy", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("DanhSachTheLoai", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("VietNamMoiNhat", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("HanQuocMoiNhat", "HienThi")
+                </div>
+                <div class="recommended">
+                    @Html.Action("AuMyMoiNhat", "HienThi")
+                </div>
+            </div>
+            <div class="col-sm-1 show-grid-left main-grids">
+                @Html.Action("BXHVietNam", "HienThi")
+                @Html.Action("BXHHanQuoc", "HienThi")
+                @Html.Action("BXHAuMy", "HienThi")
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="footer-grids">
+                <div class="footer-top">
+                    <div class="footer-top-nav">
+                        <ul>
+                            <li><a href="about.html">Top 100</a></li>
+                            <li><a href="press.html">Top 100</a></li>
+                            <li><a href="copyright.html">Top 100</a></li>
+                            <li><a href="creators.html">Bản quyền</a></li>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="developers.html">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom-nav">
+                        <ul>
+                            <li><a href="#">Nhạc Trẻ</a></li>
+                            <li><a href="#">Nhạc Hàn</a></li>
+                            <li><a href="#" class="play-icon popup-with-zoom-anim">Nhạc Âu Mỹ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <ul>
+                        <li class="languages">
+                            <select class="form-control bfh-countries" data-country="US">
+                                <option value="">Ngôn ngữ</option>
+                                <option>Tiếng Việt</option>
+                                <option>Tiếng Anh</option>
+                            </select>
+                        </li>
+                        <li class="languages">
+                            <select class="form-control bfh-countries">
+                                <option value="">Chế độ</option>
+                                <option value="AFG">Ban Đêm</option>
+                                <option value="ALA">Ban Ngày</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- //footer -->
+    </div>
+    <div class="clearfix"> </div>
+    <div class="drop-menu">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+        </ul>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster --><!-- pop-up-box -->
+    <script type="text/javascript" src="~/Content/web/js/modernizr.custom.min.js"></script>
+    <link href="~/Content/web/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Content/web/js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <!--//pop-up-box -->
+
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+</body>
+</html>
+

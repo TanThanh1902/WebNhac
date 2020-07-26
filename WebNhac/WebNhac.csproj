@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0A7B0E31-6429-44EC-97BE-AA8E161341C9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebNhac</RootNamespace>
+    <AssemblyName>WebNhac</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44304</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="CsQuery, Version=1.3.3.249, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsQuery.1.3.4\lib\net40\CsQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="en-html2enml, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\en-html2enml.dll</HintPath>
+    </Reference>
+    <Reference Include="Evernote, Version=1.0.5377.16918, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\Evernote.dll</HintPath>
+    </Reference>
+    <Reference Include="EvernoteOAuthNet, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\EvernoteOAuthNet.dll</HintPath>
+    </Reference>
+    <Reference Include="EvernoteSDK, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\EvernoteSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Owin.Security.Providers.ArcGISOnline, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.ArcGISOnline.2.26.0\lib\net45\Owin.Security.Providers.ArcGISOnline.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.ArcGISPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.ArcGISPortal.2.26.0\lib\net45\Owin.Security.Providers.ArcGISPortal.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Asana, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Asana.2.26.0\lib\net45\Owin.Security.Providers.Asana.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Backlog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Backlog.2.26.0\lib\net45\Owin.Security.Providers.Backlog.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Baidu, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Baidu.2.26.0\lib\net45\Owin.Security.Providers.Baidu.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.BattleNet, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.BattleNet.2.26.0\lib\net45\Owin.Security.Providers.BattleNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Bitbucket, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Bitbucket.2.26.0\lib\net45\Owin.Security.Providers.Bitbucket.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Box, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Box.2.26.0\lib\net45\Owin.Security.Providers.Box.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Buffer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Buffer.2.26.0\lib\net45\Owin.Security.Providers.Buffer.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Cosign, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Cosign.2.26.0\lib\net45\Owin.Security.Providers.Cosign.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.DeviantArt, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.DeviantArt.2.26.0\lib\net45\Owin.Security.Providers.DeviantArt.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Discord, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Discord.2.26.0\lib\net45\Owin.Security.Providers.Discord.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.DoYouBuzz, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.DoYouBuzz.2.26.0\lib\net45\Owin.Security.Providers.DoYouBuzz.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Dropbox, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Dropbox.2.26.0\lib\net45\Owin.Security.Providers.Dropbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.EVEOnline, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.EVEOnline.2.26.0\lib\net45\Owin.Security.Providers.EVEOnline.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Evernote, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Evernote.2.26.0\lib\net45\Owin.Security.Providers.Evernote.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Fitbit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Fitbit.2.26.0\lib\net45\Owin.Security.Providers.Fitbit.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Flickr, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Flickr.2.26.0\lib\net45\Owin.Security.Providers.Flickr.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Foursquare, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Foursquare.2.26.0\lib\net45\Owin.Security.Providers.Foursquare.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Geni, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Geni.2.26.0\lib\net45\Owin.Security.Providers.Geni.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.GitHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.GitHub.2.26.0\lib\net45\Owin.Security.Providers.GitHub.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Gitter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Gitter.2.26.0\lib\net45\Owin.Security.Providers.Gitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Google, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Google.2.26.0\lib\net45\Owin.Security.Providers.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.GooglePlus, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.GooglePlus.2.26.0\lib\net45\Owin.Security.Providers.GooglePlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.HealthGraph, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.HealthGraph.2.26.0\lib\net45\Owin.Security.Providers.HealthGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Imgur, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Imgur.2.26.0\lib\net45\Owin.Security.Providers.Imgur.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Instagram, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Instagram.2.26.0\lib\net45\Owin.Security.Providers.Instagram.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.LinkedIn, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.LinkedIn.2.26.0\lib\net45\Owin.Security.Providers.LinkedIn.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.MyHeritage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.MyHeritage.2.26.0\lib\net45\Owin.Security.Providers.MyHeritage.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Onshape, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Onshape.2.26.0\lib\net45\Owin.Security.Providers.Onshape.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.OpenID, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.OpenID.2.26.0\lib\net45\Owin.Security.Providers.OpenID.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.OpenIDBase, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.OpenIDBase.2.1.1\lib\net45\Owin.Security.Providers.OpenIDBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Orcid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Orcid.2.26.0\lib\net45\Owin.Security.Providers.Orcid.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.PayPal, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.PayPal.2.26.0\lib\net45\Owin.Security.Providers.PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Podbean, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Podbean.2.26.0\lib\net45\Owin.Security.Providers.Podbean.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Reddit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Reddit.2.26.0\lib\net45\Owin.Security.Providers.Reddit.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Salesforce, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Salesforce.2.26.0\lib\net45\Owin.Security.Providers.Salesforce.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Shopify, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Shopify.2.26.0\lib\net45\Owin.Security.Providers.Shopify.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Slack, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.SlackProvider.2.26.0\lib\net45\Owin.Security.Providers.Slack.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.SoundCloud, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.SoundCloud.2.26.0\lib\net45\Owin.Security.Providers.SoundCloud.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Spotify, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Spotify.2.26.0\lib\net45\Owin.Security.Providers.Spotify.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.StackExchange, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.StackExchange.2.26.0\lib\net45\Owin.Security.Providers.StackExchange.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Steam, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Steam.2.26.0\lib\net45\Owin.Security.Providers.Steam.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.TripIt, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.TripIt.2.26.0\lib\net45\Owin.Security.Providers.TripIt.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Twitch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Twitch.2.26.0\lib\net45\Owin.Security.Providers.Twitch.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Typeform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Typeform.2.26.0\lib\net45\Owin.Security.Providers.Typeform.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Untappd, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Untappd.2.26.0\lib\net45\Owin.Security.Providers.Untappd.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Vimeo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Vimeo.2.26.0\lib\net45\Owin.Security.Providers.Vimeo.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.VisualStudio, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.VisualStudio.2.26.0\lib\net45\Owin.Security.Providers.VisualStudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.VKontakte, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.VKontakte.2.26.0\lib\net45\Owin.Security.Providers.VKontakte.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Wargaming, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Wargaming.2.26.0\lib\net45\Owin.Security.Providers.Wargaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.WordPress, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.WordPress.2.26.0\lib\net45\Owin.Security.Providers.WordPress.dll</HintPath>
+    </Reference>
+    <Reference Include="OWin.Security.Providers.WSO2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.WSO2.2.26.0\lib\net45\OWin.Security.Providers.WSO2.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Xing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Xing.2.26.0\lib\net45\Owin.Security.Providers.Xing.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Yahoo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Yahoo.2.26.0\lib\net45\Owin.Security.Providers.Yahoo.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Security.Providers.Yammer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1328b8c16b108c43, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.Security.Providers.Yammer.2.26.0\lib\net45\Owin.Security.Providers.Yammer.dll</HintPath>
+    </Reference>
+    <Reference Include="PreMailer.Net, Version=1.2.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PreMailer.Net.1.2.7\lib\net40\PreMailer.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.8.11.0, Culture=neutral, PublicKeyToken=46b2db9ca481831b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SgmlReader.1.8.11\lib\4.0\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Thrift, Version=0.8.0.16918, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\evernote-cloud-sdk-windows.1.0.8\lib\net40\Thrift.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BinhLuansController.cs" />
+    <Compile Include="Controllers\BoSuuTapController.cs" />
+    <Compile Include="Controllers\DangKyController.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
+    <Compile Include="Controllers\DanhMucsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAlbum.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbBanner.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbBinhLuan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbCaSi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbMV.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbNguoiDung.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbNhac.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbQuocGia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTacGia.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTheLoai.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTieuSu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTraLoi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTrinhBay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbYeuThich.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\all.css" />
+    <Content Include="Content\images\Album\HayTraoChoAnh.jpg" />
+    <Content Include="Content\images\Album\LacTroi.jpg" />
+    <Content Include="Content\images\Album\Love Your Selft.jpg" />
+    <Content Include="Content\images\Album\NoiNayCoAnh.jpg" />
+    <Content Include="Content\images\BaiHat\Anh Da Quen Voi Co Don.jpg" />
+    <Content Include="Content\images\BaiHat\Anh Nang Cua Anh.jpg" />
+    <Content Include="Content\images\BaiHat\Anh O Day Ma.jpg" />
+    <Content Include="Content\images\BaiHat\Bạc Phận %28Masew Remix%29 - K-ICM, Jack %28G5R%29, Masew.mp3" />
+    <Content Include="Content\images\BaiHat\Cham Day Noi Dau.jpg" />
+    <Content Include="Content\images\BaiHat\Chrysanthemum.jpg" />
+    <Content Include="Content\images\BaiHat\Co Em Cho.jpg" />
+    <Content Include="Content\images\BaiHat\Co Gai Ngay Hom Qua.jpg" />
+    <Content Include="Content\images\BaiHat\DontLetMeDown.jpg" />
+    <Content Include="Content\images\BaiHat\Havana.jpg" />
+    <Content Include="Content\images\BaiHat\HayTraoChoAnh.jpg" />
+    <Content Include="Content\images\BaiHat\Idol.jpg" />
+    <Content Include="Content\images\BaiHat\MangChung.jpg" />
+    <Content Include="Content\images\BaiHat\NguyenTranTrungQuan.jpg" />
+    <Content Include="Content\images\BaiHat\NhatBac.jpg" />
+    <Content Include="Content\images\BaiHat\Simple Love.jpg" />
+    <Content Include="Content\images\BaiHat\SomethingJustLikeThis.jpg" />
+    <Content Include="Content\images\BaiHat\sói.jpg" />
+    <Content Include="Content\images\BaiHat\ThatGirl.jpg" />
+    <Content Include="Content\images\BaiHat\The Untamed.jpg" />
+    <Content Include="Content\images\BaiHat\TheRiver.jpg" />
+    <Content Include="Content\images\BaiHat\TieuChien.jpg" />
+    <Content Include="Content\images\BaiHat\TranTinh.jpg" />
+    <Content Include="Content\images\BaiHat\TranTinhLenh.jpg" />
+    <Content Include="Content\images\BaiHat\TuTam.jpg" />
+    <Content Include="Content\images\BaiHat\VongTien.jpg" />
+    <Content Include="Content\images\Banner\Banner.jpg" />
+    <Content Include="Content\images\CaSy\Alan Walker.jpg" />
+    <Content Include="Content\images\CaSy\Axel Johansson.jpg" />
+    <Content Include="Content\images\CaSy\BichPhuong.jpg" />
+    <Content Include="Content\images\CaSy\BTS.jpg" />
+    <Content Include="Content\images\CaSy\Camila Cabello, Young Thug.jpg" />
+    <Content Include="Content\images\CaSy\DucPhuc.jpg" />
+    <Content Include="Content\images\CaSy\Erik.jpg" />
+    <Content Include="Content\images\CaSy\Hiền Hồ.jpg" />
+    <Content Include="Content\images\CaSy\Jack.jpg" />
+    <Content Include="Content\images\CaSy\LouHoang.jpg" />
+    <Content Include="Content\images\CaSy\Madilyn Bailey, Jake Coco.jpg" />
+    <Content Include="Content\images\CaSy\Min.jpg" />
+    <Content Include="Content\images\CaSy\Miu Le.jpg" />
+    <Content Include="Content\images\CaSy\NguyenTranTrungQuan.jpg" />
+    <Content Include="Content\images\CaSy\NhatBac.jpg" />
+    <Content Include="Content\images\CaSy\Noo.jpg" />
+    <Content Include="Content\images\CaSy\Olly Murs.jpg" />
+    <Content Include="Content\images\CaSy\QuanAP.jpg" />
+    <Content Include="Content\images\CaSy\SimpleLove.jpg" />
+    <Content Include="Content\images\CaSy\SonTung.jpg" />
+    <Content Include="Content\images\CaSy\SooBin.jpg" />
+    <Content Include="Content\images\CaSy\Sói 2.jpg" />
+    <Content Include="Content\images\CaSy\ThanhHung.jpg" />
+    <Content Include="Content\images\CaSy\The Chainsmokers, Coldplay.jpg" />
+    <Content Include="Content\images\CaSy\The Chainsmokers, Daya.jpg" />
+    <Content Include="Content\images\CaSy\TieuChien.jpg" />
+    <Content Include="Content\images\CaSy\TrungQuan.jpg" />
+    <Content Include="Content\images\ChuDe\Aucotis.jpg" />
+    <Content Include="Content\images\ChuDe\Bolero.jpg" />
+    <Content Include="Content\images\ChuDe\EDM.jpg" />
+    <Content Include="Content\images\ChuDe\K-pop.jpg" />
+    <Content Include="Content\images\ChuDe\Live.jpg" />
+    <Content Include="Content\images\ChuDe\NhacKhongLoi.jpg" />
+    <Content Include="Content\images\ChuDe\NhacTre.jpg" />
+    <Content Include="Content\images\ChuDe\NhacTrung.jpg" />
+    <Content Include="Content\images\ChuDe\Rock.jpg" />
+    <Content Include="Content\images\ChuDe\Tre.jpg" />
+    <Content Include="Content\images\ChuDe\Trung.jpg" />
+    <Content Include="Content\images\ChuDe\Us-Uk.jpg" />
+    <Content Include="Content\js\JavaScript.js" />
+    <Content Include="Content\js\baguetteBox.min.js" />
+    <Content Include="Content\js\bootsnav.js" />
+    <Content Include="Content\js\bootstrap-select.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\contact-form-script.js" />
+    <Content Include="Content\js\custom.js" />
+    <Content Include="Content\js\form-validator.min.js" />
+    <Content Include="Content\js\images-loded.min.js" />
+    <Content Include="Content\js\inewsticker.js" />
+    <Content Include="Content\js\isotope.min.js" />
+    <Content Include="Content\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\jquery.nicescroll.min.js" />
+    <Content Include="Content\js\jquery.superslides.min.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\slide.js" />
+    <Content Include="Content\fileNhac\Anh-Da-Quen-Voi-Co-Don-Soobin-Hoang-Son.mp3" />
+    <Content Include="Content\fileNhac\Anh-Nang-Cua-Anh-Cho-Em-Den-Ngay-Mai-OST-Duc-Phuc.mp3" />
+    <Content Include="Content\fileNhac\Anh-O-Day-Ma-Duc-Phuc.mp3" />
+    <Content Include="Content\fileNhac\Bạc Phận %28Masew Remix%29 - K-ICM, Jack %28G5R%29, Masew.mp3" />
+    <Content Include="Content\fileNhac\Cham-Day-Noi-Dau-ERIK.mp3" />
+    <Content Include="Content\fileNhac\Chrysanthemum.jpg" />
+    <Content Include="Content\fileNhac\Co-Ai-Di-Hoai-Mot-Loi-Yen-Tatoo-Quan-A-P.mp3" />
+    <Content Include="Content\fileNhac\Co-Em-Cho-MIN-Mr-A.mp3" />
+    <Content Include="Content\fileNhac\Co-Gai-Ngay-Hom-Qua-Co-Gai-Den-Tu-Hom-Qua-OST-Miu-Le.mp3" />
+    <Content Include="Content\fileNhac\DontLetMeDown-TheChainsmokersDaya-5817744.mp3" />
+    <Content Include="Content\fileNhac\Havana-CamilaCabelloYoungThug-5817730.mp3" />
+    <Content Include="Content\fileNhac\Havana.jpg" />
+    <Content Include="Content\fileNhac\Hay Trao Cho Anh.mp3" />
+    <Content Include="Content\fileNhac\IDOL - BTS.mp3" />
+    <Content Include="Content\fileNhac\KhongHoiTranTinhLenhOst-LamHai-6045684.mp3" />
+    <Content Include="Content\fileNhac\KhucTanTranTinhTranTinhLenhOst-TieuChienXiaoZhan-6038365.mp3" />
+    <Content Include="Content\fileNhac\Khuon Mat Dang Thuong.mp3" />
+    <Content Include="Content\fileNhac\Lac Troi.mp3" />
+    <Content Include="Content\fileNhac\Lac-Nhau-Co-Phai-Muon-Doi-Cho-Em-Den-Ngay-Mai-OST-ERIK.mp3" />
+    <Content Include="Content\fileNhac\MangChung-HaNhi-6090040.mp3" />
+    <Content Include="Content\fileNhac\Minh-La-Gi-Cua-Nhau-Lou-Hoang.mp3" />
+    <Content Include="Content\fileNhac\Mot Nam Moi Binh An.mp3" />
+    <Content Include="Content\fileNhac\Nam-Ay-Duc-Phuc.mp3" />
+    <Content Include="Content\fileNhac\Nao-Ca-Vang-OnlyC-Lou-Hoang.mp3" />
+    <Content Include="Content\fileNhac\Neu-Ngay-Ay-Soobin-Hoang-Son.mp3" />
+    <Content Include="Content\fileNhac\Noi Nay Co Anh.mp3" />
+    <Content Include="Content\fileNhac\Phia-Sau-Mot-Co-Gai-Soobin-Hoang-Son.mp3" />
+    <Content Include="Content\fileNhac\Quan-Trong-La-Than-Thai-Thanh-Hung.mp3" />
+    <Content Include="Content\fileNhac\Sai-Nguoi-Sai-Thoi-Diem-Thanh-Hung.mp3" />
+    <Content Include="Content\fileNhac\Sao-Em-Vo-Tinh-Jack-Liam.mp3" />
+    <Content Include="Content\fileNhac\Sau-Tat-Ca-ERIK.mp3" />
+    <Content Include="Content\fileNhac\Simple-Love-Obito-Seachains-Davis.mp3" />
+    <Content Include="Content\fileNhac\SomethingJustLikeThis-TheChainsmokersColdplay-5337136.mp3" />
+    <Content Include="Content\fileNhac\SomethingJustLikeThis.jpg" />
+    <Content Include="Content\fileNhac\Song-Gio-Jack-K-ICM.mp3" />
+    <Content Include="Content\fileNhac\Ta-Con-Yeu-Nhau-Duc-Phuc.mp3" />
+    <Content Include="Content\fileNhac\ThatGirl-OllyMurs-4673032.mp3" />
+    <Content Include="Content\fileNhac\ThatGirl.jpg" />
+    <Content Include="Content\fileNhac\Thay-Toi-Yeu-Co-Ay-Thanh-Hung.mp3" />
+    <Content Include="Content\fileNhac\TheRiver-AxelJohansson-5280558.mp3" />
+    <Content Include="Content\fileNhac\TheRiver.jpg" />
+    <Content Include="Content\fileNhac\TuTam-NguyenTranTrungQuan-6131334.mp3" />
+    <Content Include="Content\fileNhac\VongTienTranTinhLenhOST-VuongNhatBacWangYiboTieuChienXiaoZhan-6010920.mp3" />
+    <Content Include="Content\fileNhac\Xin-Dung-Lang-Im-Soobin-Hoang-Son.mp3" />
+    <Content Include="Content\fileNhac\Yeu-Duoc-Khong-Duc-Phuc.mp3" />
+    <Content Include="Content\fileNhac\Yeu-Em-Dai-Kho-Lou-Hoang.mp3" />
+    <Content Include="Content\fileNhac\Yeu-Khac-Thuong-Hai-Thanh-Hung.mp3" />
+    <Content Include="Content\fileNhac\Yeu-Thuong-Ngay-Do-Yeu-Em-Bat-Chap-OST-Soobin-Hoang-Son.mp3" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Slider.css" />
+    <Content Include="Content\web\css\bootstrap.min.css" />
+    <Content Include="Content\web\css\dashboard.css" />
+    <Content Include="Content\web\css\popuo-box.css" />
+    <Content Include="Content\web\css\style.css" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\web\images\12.png" />
+    <Content Include="Content\web\images\13.png" />
+    <Content Include="Content\web\images\9.png" />
+    <Content Include="Content\web\images\behance.png" />
+    <Content Include="Content\web\images\c.jpg" />
+    <Content Include="Content\web\images\c1.jpg" />
+    <Content Include="Content\web\images\c2.jpg" />
+    <Content Include="Content\web\images\c3.jpg" />
+    <Content Include="Content\web\images\ch1.jpg" />
+    <Content Include="Content\web\images\ch1.png" />
+    <Content Include="Content\web\images\ch2.jpg" />
+    <Content Include="Content\web\images\ch3.jpg" />
+    <Content Include="Content\web\images\ch4.jpg" />
+    <Content Include="Content\web\images\comment.png" />
+    <Content Include="Content\web\images\create.jpg" />
+    <Content Include="Content\web\images\dev-img.jpg" />
+    <Content Include="Content\web\images\dribbble.png" />
+    <Content Include="Content\web\images\e1.jpg" />
+    <Content Include="Content\web\images\e2.jpg" />
+    <Content Include="Content\web\images\e3.jpg" />
+    <Content Include="Content\web\images\e4.jpg" />
+    <Content Include="Content\web\images\eg1.jpg" />
+    <Content Include="Content\web\images\eg2.jpg" />
+    <Content Include="Content\web\images\eg3.jpg" />
+    <Content Include="Content\web\images\eg4.jpg" />
+    <Content Include="Content\web\images\fb.png" />
+    <Content Include="Content\web\images\fb1.png" />
+    <Content Include="Content\web\images\g.jpg" />
+    <Content Include="Content\web\images\g1.jpg" />
+    <Content Include="Content\web\images\g2.jpg" />
+    <Content Include="Content\web\images\g3.jpg" />
+    <Content Include="Content\web\images\gm1.jpg" />
+    <Content Include="Content\web\images\gm2.jpg" />
+    <Content Include="Content\web\images\gm3.jpg" />
+    <Content Include="Content\web\images\gm4.jpg" />
+    <Content Include="Content\web\images\google.png" />
+    <Content Include="Content\web\images\h-arrow.png" />
+    <Content Include="Content\web\images\h1.jpg" />
+    <Content Include="Content\web\images\h2.jpg" />
+    <Content Include="Content\web\images\h3.jpg" />
+    <Content Include="Content\web\images\h4.jpg" />
+    <Content Include="Content\web\images\i.jpg" />
+    <Content Include="Content\web\images\like.png" />
+    <Content Include="Content\web\images\lines.png" />
+    <Content Include="Content\web\images\linkedin.png" />
+    <Content Include="Content\web\images\logo.png" />
+    <Content Include="Content\web\images\m1.jpg" />
+    <Content Include="Content\web\images\m2.jpg" />
+    <Content Include="Content\web\images\m3.jpg" />
+    <Content Include="Content\web\images\m4.jpg" />
+    <Content Include="Content\web\images\m5.jpg" />
+    <Content Include="Content\web\images\m6.jpg" />
+    <Content Include="Content\web\images\ma1.jpg" />
+    <Content Include="Content\web\images\ma2.jpg" />
+    <Content Include="Content\web\images\ma3.jpg" />
+    <Content Include="Content\web\images\ma4.jpg" />
+    <Content Include="Content\web\images\ma5.jpg" />
+    <Content Include="Content\web\images\ma6.jpg" />
+    <Content Include="Content\web\images\mt1.jpg" />
+    <Content Include="Content\web\images\mt2.jpg" />
+    <Content Include="Content\web\images\mt3.jpg" />
+    <Content Include="Content\web\images\mt4.jpg" />
+    <Content Include="Content\web\images\mt5.jpg" />
+    <Content Include="Content\web\images\mt6.jpg" />
+    <Content Include="Content\web\images\mv.png" />
+    <Content Include="Content\web\images\mv1.jpg" />
+    <Content Include="Content\web\images\mv2.jpg" />
+    <Content Include="Content\web\images\mv3.jpg" />
+    <Content Include="Content\web\images\mv4.jpg" />
+    <Content Include="Content\web\images\my1.jpg" />
+    <Content Include="Content\web\images\my2.jpg" />
+    <Content Include="Content\web\images\my3.jpg" />
+    <Content Include="Content\web\images\my4.jpg" />
+    <Content Include="Content\web\images\my5.jpg" />
+    <Content Include="Content\web\images\my6.jpg" />
+    <Content Include="Content\web\images\n1.jpg" />
+    <Content Include="Content\web\images\n10.jpg" />
+    <Content Include="Content\web\images\n11.jpg" />
+    <Content Include="Content\web\images\n12.jpg" />
+    <Content Include="Content\web\images\n2.jpg" />
+    <Content Include="Content\web\images\n3.jpg" />
+    <Content Include="Content\web\images\n4.jpg" />
+    <Content Include="Content\web\images\n5.jpg" />
+    <Content Include="Content\web\images\n6.jpg" />
+    <Content Include="Content\web\images\n7.jpg" />
+    <Content Include="Content\web\images\n8.jpg" />
+    <Content Include="Content\web\images\n9.jpg" />
+    <Content Include="Content\web\images\pinterest.png" />
+    <Content Include="Content\web\images\pr1.png" />
+    <Content Include="Content\web\images\pr2.png" />
+    <Content Include="Content\web\images\r1.jpg" />
+    <Content Include="Content\web\images\r2.jpg" />
+    <Content Include="Content\web\images\r3.jpg" />
+    <Content Include="Content\web\images\r4.jpg" />
+    <Content Include="Content\web\images\r5.jpg" />
+    <Content Include="Content\web\images\r6.jpg" />
+    <Content Include="Content\web\images\rss.png" />
+    <Content Include="Content\web\images\s1.jpg" />
+    <Content Include="Content\web\images\select-arrow.png" />
+    <Content Include="Content\web\images\social.png" />
+    <Content Include="Content\web\images\sp1.jpg" />
+    <Content Include="Content\web\images\sp2.jpg" />
+    <Content Include="Content\web\images\sp3.jpg" />
+    <Content Include="Content\web\images\sp4.jpg" />
+    <Content Include="Content\web\images\sp5.jpg" />
+    <Content Include="Content\web\images\sp6.jpg" />
+    <Content Include="Content\web\images\t1.jpg" />
+    <Content Include="Content\web\images\t2.jpg" />
+    <Content Include="Content\web\images\t3.jpg" />
+    <Content Include="Content\web\images\themes.png" />
+    <Content Include="Content\web\images\tm1.jpg" />
+    <Content Include="Content\web\images\tm2.jpg" />
+    <Content Include="Content\web\images\tm3.jpg" />
+    <Content Include="Content\web\images\tm4.jpg" />
+    <Content Include="Content\web\images\try-banner.jpg" />
+    <Content Include="Content\web\images\try.jpg" />
+    <Content Include="Content\web\images\tv.png" />
+    <Content Include="Content\web\images\twitter.png" />
+    <Content Include="Content\web\images\u12.png" />
+    <Content Include="Content\web\images\view.png" />
+    <Content Include="Content\web\images\we1.jpg" />
+    <Content Include="Content\web\images\we2.jpg" />
+    <Content Include="Content\web\images\we3.jpg" />
+    <Content Include="Content\web\images\we4.jpg" />
+    <Content Include="Content\web\images\whatsapp.png" />
+    <Content Include="Content\web\js\bootstrap.min.js" />
+    <Content Include="Content\web\js\jquery-1.11.1.min.js" />
+    <Content Include="Content\web\js\jquery.magnific-popup.js" />
+    <Content Include="Content\web\js\jquery.polyglot.language.switcher.js" />
+    <Content Include="Content\web\js\modernizr.custom.min.js" />
+    <Content Include="Content\web\js\responsiveslides.min.js" />
+    <Content Include="Content\web\w3layouts-License.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\web\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\BinhLuans\Index.cshtml" />
+    <Content Include="Views\BoSuuTap\Index.cshtml" />
+    <Content Include="Views\BoSuuTap\NhacTheoCS.cshtml" />
+    <Content Include="Views\DangKy\DangKy.cshtml" />
+    <Content Include="Views\DangNhap\DangXuat.cshtml" />
+    <Content Include="Views\DanhMucs\BaiHatNgheNhieu.cshtml" />
+    <Content Include="Views\DanhMucs\DSCaSy.cshtml" />
+    <Content Include="Views\DanhMucs\DSQuocGiaN.cshtml" />
+    <Content Include="Views\DanhMucs\DSTheLoaiN.cshtml" />
+    <Content Include="Views\DanhMucs\NhacTheoTL.cshtml" />
+    <Content Include="Views\DanhMucs\Top100QG.cshtml" />
+    <Content Include="Views\HienThi\AuMyMoiNhat.cshtml" />
+    <Content Include="Views\HienThi\BaiHatNgheNhieu.cshtml" />
+    <Content Include="Views\HienThi\BXHAuMy.cshtml" />
+    <Content Include="Views\HienThi\BXHHanQuoc.cshtml" />
+    <Content Include="Views\HienThi\BXHVietNam.cshtml" />
+    <Content Include="Views\HienThi\CongCu.cshtml" />
+    <Content Include="Views\HienThi\DanhSachCaSy.cshtml" />
+    <Content Include="Views\HienThi\DanhSachTheLoai.cshtml" />
+    <Content Include="Views\HienThi\HanQuocMoiNhat.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HienThi\LinkNhacTop100NhacTre.cshtml" />
+    <Content Include="Views\HienThi\NgheGiHomNay.cshtml" />
+    <Content Include="Views\HienThi\Slider.cshtml" />
+    <Content Include="Views\HienThi\TimKiem.cshtml" />
+    <Content Include="Views\HienThi\Top100BaiHatNhacTre.cshtml" />
+    <Content Include="Views\HienThi\VietNamMoiNhat.cshtml" />
+    <Content Include="Views\HienThi\XemChiTiet.cshtml" />
+    <Content Include="Views\Layout\Layout.cshtml" />
+    <Content Include="Views\Home\Banner.cshtml" />
+    <Content Include="Views\Home\dsNhac.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\LocNhac\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49759</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44304/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

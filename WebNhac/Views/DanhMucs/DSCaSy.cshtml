@@ -1,0 +1,35 @@
+﻿@using Music_pv.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DSCaSy>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+<div class="recommended-grids english-grid">
+    <div class="recommended-info">
+        <div class="heading">
+            <h3>Tất cả ca sỹ</h3>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 resent-grid recommended-grid show-video-grid" style="margin-top: 1%">
+            <div class="resent-grid-img recommended-grid-img">
+                <a href="@Url.Action("NhacTheoCS", "BoSuuTap", new { @id = item.IDCaSy})"><img src="@Url.Content("~/Image/imgCaSy/"+item.HinhCaSy)" alt="" style="width: 100%; height: 150px" /></a>
+            </div>
+            <div class="resent-grid-info recommended-grid-info">
+                <p class="author" style="width: 100%; height: 50px"><a href="@Url.Action("NhacTheoCS", "BoSuuTap", new { @id = item.IDCaSy})" class="author">@item.TenCaSy</a></p>
+                <p class="author"><a href="#" class="author">Số bài hát: 0</a></p>
+                <p class="views">0 lượt xem</p>
+            </div>
+        </div>
+    }
+    <div class="clearfix"> </div>
+</div>
+
+
+<div style="margin-left: 45%">
+    @Html.PagedListPager(Model, Page => Url.Action("DSCaSy", new { Page = Page }))
+</div>

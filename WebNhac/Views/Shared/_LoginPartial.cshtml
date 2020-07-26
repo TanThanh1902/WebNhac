@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul>
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul>
+        <li><a href="https://www.facebook.com/v2.8/dialog/oauth?response_type=code&client_id=715479232639404&redirect_uri=https%3A%2F%2Flocalhost%3A44304%2Fsignin-facebook&scope=public_profile%2Cemail&state=Kld_GxMOf8FTbKR0lcT_A_KZ6E0Ys2cqo7p1Ytrceqa1YgeUwWKLNUtof1LqXZvJigROwaSq6kv__zELbs7n4N3_BI-M11WQy3CsSk9MxnSZPNdAGAlu6n5rNiDWrAiFGj5KhaQoK2gXvp2_G-DZxF_I9QNQCb-cBTDri-pzctkXQ5xmQsXaVWGECoebM_J4PIfONCAo8KI4i57GGtxoT46xRbp4VajZ9BL8JBljjbQ">Đăng nhập</a></li>
+    </ul>
+}

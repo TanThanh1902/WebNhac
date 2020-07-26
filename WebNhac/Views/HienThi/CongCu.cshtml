@@ -1,0 +1,56 @@
+﻿@using Music_pv.Models;
+@model User
+@{ 
+    User ses = (User)Session["flag"];
+}
+<div class="header-top-right">
+    <div class="signin">
+        @if (Session["flag"] != null)
+        {
+            <b>Chào: @ses.HoTen</b>
+            <a href="@Url.Action("DangXuat", "DangNhap")">Đăng xuất</a>
+            if (Session["Admin"] != null)
+            {
+                
+            }
+        }
+        else
+        {
+            <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">Đăng nhập</a>
+        }
+        <div id="small-dialog2" class="mfp-hide">
+            <h3>Đăng nhập</h3>
+            <div class="social-sits">
+                <div class="facebook-button">
+                    <a href="#">Đăng nhập bằng Facebook</a>
+                </div>
+                <div class="chrome-button">
+                    <a href="#">Đăng nhập bằng Google &nbsp;&nbsp;&nbsp;</a>
+                </div>
+                <div class="button-bottom">
+                    <p>Bạn chưa có tài khoản? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Đăng ký</a></p>
+                </div>
+            </div>
+            <div class="signup">
+                <form action="@Url.Action("DangNhap", "DangNhap")" method="post">
+                    <input type="text" class="email" placeholder="Tên đăng nhập" name="txtTaiKhoan" required />
+                    <input type="password" class="email" placeholder="Mật khẩu" name="txtMatKhau" required />
+                    <button class="btn btn-danger">ĐĂNG NHẬP</button>
+                    <div class="forgot">
+                        <a href="#">Quên mật khẩu ?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+    </div>
+    <div class="signin">
+        @if (ses == null)
+        {
+            <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Đăng ký</a>
+        }
+        @Html.Action("DangKy", "DangKy")
+    </div>
+    <div class="clearfix"> </div>
+</div>
