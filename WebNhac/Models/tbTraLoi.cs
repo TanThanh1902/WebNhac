@@ -19,7 +19,6 @@ namespace WebNhac.Models
         public Nullable<System.DateTime> NgayDang { get; set; }
         public Nullable<int> MaBinhLuan { get; set; }
         public Nullable<int> MaND { get; set; }
-        public Nullable<bool> MV { get; set; }
     
         public virtual tbBinhLuan tbBinhLuan { get; set; }
         public virtual tbNguoiDung tbNguoiDung { get; set; }

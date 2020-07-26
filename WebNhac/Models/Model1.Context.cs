@@ -30,13 +30,10 @@ namespace WebNhac.Models
         public virtual DbSet<tbBanner> tbBanners { get; set; }
         public virtual DbSet<tbBinhLuan> tbBinhLuans { get; set; }
         public virtual DbSet<tbCaSi> tbCaSis { get; set; }
-        public virtual DbSet<tbMV> tbMVs { get; set; }
         public virtual DbSet<tbNguoiDung> tbNguoiDungs { get; set; }
         public virtual DbSet<tbNhac> tbNhacs { get; set; }
         public virtual DbSet<tbQuocGia> tbQuocGias { get; set; }
-        public virtual DbSet<tbTacGia> tbTacGias { get; set; }
         public virtual DbSet<tbTheLoai> tbTheLoais { get; set; }
-        public virtual DbSet<tbTieuSu> tbTieuSus { get; set; }
         public virtual DbSet<tbTraLoi> tbTraLois { get; set; }
         public virtual DbSet<tbTrinhBay> tbTrinhBays { get; set; }
         public virtual DbSet<tbYeuThich> tbYeuThiches { get; set; }

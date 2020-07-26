@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NgheNhacModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NgheNhacModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -42,7 +42,6 @@
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="MaNhac" Type="int" />
           <Property Name="MaND" Type="int" />
-          <Property Name="MV" Type="bit" />
         </EntityType>
         <EntityType Name="tbCaSi">
           <Key>
@@ -51,18 +50,6 @@
           <Property Name="MaCaSi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenCaSi" Type="nvarchar" MaxLength="30" />
           <Property Name="AnhCaSi" Type="nvarchar(max)" />
-          <Property Name="MaTieuSu" Type="int" />
-        </EntityType>
-        <EntityType Name="tbMV">
-          <Key>
-            <PropertyRef Name="MaMV" />
-          </Key>
-          <Property Name="MaMV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenMV" Type="nvarchar" MaxLength="50" />
-          <Property Name="LinkNhung" Type="nvarchar(max)" />
-          <Property Name="MaTheLoai" Type="int" />
-          <Property Name="MaTacGia" Type="int" />
-          <Property Name="LoiBaiHat" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbNguoiDung">
           <Key>
@@ -89,7 +76,6 @@
           <Property Name="LinkTaiVe" Type="nvarchar(max)" />
           <Property Name="LuotLike" Type="int" />
           <Property Name="MaTheLoai" Type="int" />
-          <Property Name="MaTacGia" Type="int" />
           <Property Name="MaQuocGia" Type="int" />
           <Property Name="NgayDang" Type="datetime" />
         </EntityType>
@@ -101,15 +87,6 @@
           <Property Name="TenQuocGia" Type="nvarchar" MaxLength="50" />
           <Property Name="AnhQuocGia" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="tbTacGia">
-          <Key>
-            <PropertyRef Name="MaTacGia" />
-          </Key>
-          <Property Name="MaTacGia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenTacGia" Type="nvarchar" MaxLength="50" />
-          <Property Name="AnhTacGia" Type="nvarchar(max)" />
-          <Property Name="MaTieuSu" Type="int" />
-        </EntityType>
         <EntityType Name="tbTheLoai">
           <Key>
             <PropertyRef Name="MaTheLoai" />
@@ -117,15 +94,6 @@
           <Property Name="MaTheLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTheLoai" Type="nvarchar" MaxLength="20" />
           <Property Name="AnhTheloai" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="tbTieuSu">
-          <Key>
-            <PropertyRef Name="MaTieuSu" />
-          </Key>
-          <Property Name="MaTieuSu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenNgheSy" Type="nvarchar" MaxLength="50" />
-          <Property Name="NamSinh" Type="nvarchar" MaxLength="50" />
-          <Property Name="TieuSu" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbTraLoi">
           <Key>
@@ -136,7 +104,6 @@
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="MaBinhLuan" Type="int" />
           <Property Name="MaND" Type="int" />
-          <Property Name="MV" Type="bit" />
         </EntityType>
         <EntityType Name="tbTrinhBay">
           <Key>
@@ -145,7 +112,6 @@
           <Property Name="MaTrinhBay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaNhac" Type="int" />
           <Property Name="MaCaSi" Type="int" />
-          <Property Name="MV" Type="bit" />
         </EntityType>
         <EntityType Name="tbYeuThich">
           <Key>
@@ -191,18 +157,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbCaSi_tbTieuSu">
-          <End Role="tbTieuSu" Type="Self.tbTieuSu" Multiplicity="0..1" />
-          <End Role="tbCaSi" Type="Self.tbCaSi" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTieuSu">
-              <PropertyRef Name="MaTieuSu" />
-            </Principal>
-            <Dependent Role="tbCaSi">
-              <PropertyRef Name="MaTieuSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbNhac_tbQuocGia">
           <End Role="tbQuocGia" Type="Self.tbQuocGia" Multiplicity="0..1" />
           <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="*" />
@@ -215,18 +169,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbNhac_tbTacGia">
-          <End Role="tbTacGia" Type="Self.tbTacGia" Multiplicity="0..1" />
-          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTacGia">
-              <PropertyRef Name="MaTacGia" />
-            </Principal>
-            <Dependent Role="tbNhac">
-              <PropertyRef Name="MaTacGia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbNhac_tbTheLoai">
           <End Role="tbTheLoai" Type="Self.tbTheLoai" Multiplicity="0..1" />
           <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="*" />
@@ -236,18 +178,6 @@
             </Principal>
             <Dependent Role="tbNhac">
               <PropertyRef Name="MaTheLoai" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbTacGia_tbTieuSu">
-          <End Role="tbTieuSu" Type="Self.tbTieuSu" Multiplicity="0..1" />
-          <End Role="tbTacGia" Type="Self.tbTacGia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTieuSu">
-              <PropertyRef Name="MaTieuSu" />
-            </Principal>
-            <Dependent Role="tbTacGia">
-              <PropertyRef Name="MaTieuSu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -311,31 +241,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbYeuThich_tbNhac">
-          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
-          <End Role="tbYeuThich" Type="Self.tbYeuThich" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNhac">
-              <PropertyRef Name="MaNhac" />
-            </Principal>
-            <Dependent Role="tbYeuThich">
-              <PropertyRef Name="MaNhac" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NgheNhacModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAlbum" EntityType="Self.tbAlbum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbBinhLuan" EntityType="Self.tbBinhLuan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCaSi" EntityType="Self.tbCaSi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbMV" EntityType="Self.tbMV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbNguoiDung" EntityType="Self.tbNguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbNhac" EntityType="Self.tbNhac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbQuocGia" EntityType="Self.tbQuocGia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbTacGia" EntityType="Self.tbTacGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTheLoai" EntityType="Self.tbTheLoai" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbTieuSu" EntityType="Self.tbTieuSu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTraLoi" EntityType="Self.tbTraLoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTrinhBay" EntityType="Self.tbTrinhBay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbYeuThich" EntityType="Self.tbYeuThich" Schema="dbo" store:Type="Tables" />
@@ -351,25 +266,13 @@
             <End Role="tbNguoiDung" EntitySet="tbNguoiDung" />
             <End Role="tbBinhLuan" EntitySet="tbBinhLuan" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbCaSi_tbTieuSu" Association="Self.FK_tbCaSi_tbTieuSu">
-            <End Role="tbTieuSu" EntitySet="tbTieuSu" />
-            <End Role="tbCaSi" EntitySet="tbCaSi" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbNhac_tbQuocGia" Association="Self.FK_tbNhac_tbQuocGia">
             <End Role="tbQuocGia" EntitySet="tbQuocGia" />
-            <End Role="tbNhac" EntitySet="tbNhac" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbNhac_tbTacGia" Association="Self.FK_tbNhac_tbTacGia">
-            <End Role="tbTacGia" EntitySet="tbTacGia" />
             <End Role="tbNhac" EntitySet="tbNhac" />
           </AssociationSet>
           <AssociationSet Name="FK_tbNhac_tbTheLoai" Association="Self.FK_tbNhac_tbTheLoai">
             <End Role="tbTheLoai" EntitySet="tbTheLoai" />
             <End Role="tbNhac" EntitySet="tbNhac" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbTacGia_tbTieuSu" Association="Self.FK_tbTacGia_tbTieuSu">
-            <End Role="tbTieuSu" EntitySet="tbTieuSu" />
-            <End Role="tbTacGia" EntitySet="tbTacGia" />
           </AssociationSet>
           <AssociationSet Name="FK_tbTraLoi_tbBinhLuan" Association="Self.FK_tbTraLoi_tbBinhLuan">
             <End Role="tbBinhLuan" EntitySet="tbBinhLuan" />
@@ -391,13 +294,8 @@
             <End Role="tbAlbum" EntitySet="tbAlbum" />
             <End Role="tbYeuThich" EntitySet="tbYeuThich" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbYeuThich_tbNhac" Association="Self.FK_tbYeuThich_tbNhac">
-            <End Role="tbNhac" EntitySet="tbNhac" />
-            <End Role="tbYeuThich" EntitySet="tbYeuThich" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NgheNhacModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -441,7 +339,6 @@
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="MaNhac" Type="Int32" />
           <Property Name="MaND" Type="Int32" />
-          <Property Name="MV" Type="Boolean" />
           <NavigationProperty Name="tbNguoiDung" Relationship="Self.FK_tbBinhLuan_tbNguoiDung" FromRole="tbBinhLuan" ToRole="tbNguoiDung" />
           <NavigationProperty Name="tbTraLois" Relationship="Self.FK_tbTraLoi_tbBinhLuan" FromRole="tbBinhLuan" ToRole="tbTraLoi" />
         </EntityType>
@@ -452,20 +349,7 @@
           <Property Name="MaCaSi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenCaSi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="AnhCaSi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaTieuSu" Type="Int32" />
-          <NavigationProperty Name="tbTieuSu" Relationship="Self.FK_tbCaSi_tbTieuSu" FromRole="tbCaSi" ToRole="tbTieuSu" />
           <NavigationProperty Name="tbTrinhBays" Relationship="Self.FK_tbTrinhBay_tbCaSi" FromRole="tbCaSi" ToRole="tbTrinhBay" />
-        </EntityType>
-        <EntityType Name="tbMV">
-          <Key>
-            <PropertyRef Name="MaMV" />
-          </Key>
-          <Property Name="MaMV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenMV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LinkNhung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaTheLoai" Type="Int32" />
-          <Property Name="MaTacGia" Type="Int32" />
-          <Property Name="LoiBaiHat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbNguoiDung">
           <Key>
@@ -495,12 +379,10 @@
           <Property Name="LinkTaiVe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LuotLike" Type="Int32" />
           <Property Name="MaTheLoai" Type="Int32" />
-          <Property Name="MaTacGia" Type="Int32" />
           <Property Name="MaQuocGia" Type="Int32" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbBanners" Relationship="Self.FK_tbBanner_tbNhac" FromRole="tbNhac" ToRole="tbBanner" />
           <NavigationProperty Name="tbQuocGia" Relationship="Self.FK_tbNhac_tbQuocGia" FromRole="tbNhac" ToRole="tbQuocGia" />
-          <NavigationProperty Name="tbTacGia" Relationship="Self.FK_tbNhac_tbTacGia" FromRole="tbNhac" ToRole="tbTacGia" />
           <NavigationProperty Name="tbTheLoai" Relationship="Self.FK_tbNhac_tbTheLoai" FromRole="tbNhac" ToRole="tbTheLoai" />
           <NavigationProperty Name="tbTrinhBays" Relationship="Self.FK_tbTrinhBay_tbNhac" FromRole="tbNhac" ToRole="tbTrinhBay" />
           <NavigationProperty Name="tbYeuThiches" Relationship="Self.FK_tbYeuThich_tbNhac" FromRole="tbNhac" ToRole="tbYeuThich" />
@@ -514,17 +396,6 @@
           <Property Name="AnhQuocGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbNhacs" Relationship="Self.FK_tbNhac_tbQuocGia" FromRole="tbQuocGia" ToRole="tbNhac" />
         </EntityType>
-        <EntityType Name="tbTacGia">
-          <Key>
-            <PropertyRef Name="MaTacGia" />
-          </Key>
-          <Property Name="MaTacGia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenTacGia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AnhTacGia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaTieuSu" Type="Int32" />
-          <NavigationProperty Name="tbNhacs" Relationship="Self.FK_tbNhac_tbTacGia" FromRole="tbTacGia" ToRole="tbNhac" />
-          <NavigationProperty Name="tbTieuSu" Relationship="Self.FK_tbTacGia_tbTieuSu" FromRole="tbTacGia" ToRole="tbTieuSu" />
-        </EntityType>
         <EntityType Name="tbTheLoai">
           <Key>
             <PropertyRef Name="MaTheLoai" />
@@ -533,17 +404,6 @@
           <Property Name="TenTheLoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="AnhTheloai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tbNhacs" Relationship="Self.FK_tbNhac_tbTheLoai" FromRole="tbTheLoai" ToRole="tbNhac" />
-        </EntityType>
-        <EntityType Name="tbTieuSu">
-          <Key>
-            <PropertyRef Name="MaTieuSu" />
-          </Key>
-          <Property Name="MaTieuSu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenNgheSy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NamSinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TieuSu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tbCaSis" Relationship="Self.FK_tbCaSi_tbTieuSu" FromRole="tbTieuSu" ToRole="tbCaSi" />
-          <NavigationProperty Name="tbTacGias" Relationship="Self.FK_tbTacGia_tbTieuSu" FromRole="tbTieuSu" ToRole="tbTacGia" />
         </EntityType>
         <EntityType Name="tbTraLoi">
           <Key>
@@ -554,7 +414,6 @@
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="MaBinhLuan" Type="Int32" />
           <Property Name="MaND" Type="Int32" />
-          <Property Name="MV" Type="Boolean" />
           <NavigationProperty Name="tbBinhLuan" Relationship="Self.FK_tbTraLoi_tbBinhLuan" FromRole="tbTraLoi" ToRole="tbBinhLuan" />
           <NavigationProperty Name="tbNguoiDung" Relationship="Self.FK_tbTraLoi_tbNguoiDung" FromRole="tbTraLoi" ToRole="tbNguoiDung" />
         </EntityType>
@@ -565,7 +424,6 @@
           <Property Name="MaTrinhBay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaNhac" Type="Int32" />
           <Property Name="MaCaSi" Type="Int32" />
-          <Property Name="MV" Type="Boolean" />
           <NavigationProperty Name="tbCaSi" Relationship="Self.FK_tbTrinhBay_tbCaSi" FromRole="tbTrinhBay" ToRole="tbCaSi" />
           <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbTrinhBay_tbNhac" FromRole="tbTrinhBay" ToRole="tbNhac" />
         </EntityType>
@@ -639,18 +497,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbCaSi_tbTieuSu">
-          <End Role="tbTieuSu" Type="Self.tbTieuSu" Multiplicity="0..1" />
-          <End Role="tbCaSi" Type="Self.tbCaSi" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTieuSu">
-              <PropertyRef Name="MaTieuSu" />
-            </Principal>
-            <Dependent Role="tbCaSi">
-              <PropertyRef Name="MaTieuSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tbTrinhBay_tbCaSi">
           <End Role="tbCaSi" Type="Self.tbCaSi" Multiplicity="0..1" />
           <End Role="tbTrinhBay" Type="Self.tbTrinhBay" Multiplicity="*" />
@@ -684,18 +530,6 @@
             </Principal>
             <Dependent Role="tbNhac">
               <PropertyRef Name="MaQuocGia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbNhac_tbTacGia">
-          <End Role="tbTacGia" Type="Self.tbTacGia" Multiplicity="0..1" />
-          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTacGia">
-              <PropertyRef Name="MaTacGia" />
-            </Principal>
-            <Dependent Role="tbNhac">
-              <PropertyRef Name="MaTacGia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -735,31 +569,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbTacGia_tbTieuSu">
-          <End Role="tbTieuSu" Type="Self.tbTieuSu" Multiplicity="0..1" />
-          <End Role="tbTacGia" Type="Self.tbTacGia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTieuSu">
-              <PropertyRef Name="MaTieuSu" />
-            </Principal>
-            <Dependent Role="tbTacGia">
-              <PropertyRef Name="MaTieuSu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NgheNhacEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tbAlbums" EntityType="Self.tbAlbum" />
           <EntitySet Name="tbBanners" EntityType="Self.tbBanner" />
           <EntitySet Name="tbBinhLuans" EntityType="Self.tbBinhLuan" />
           <EntitySet Name="tbCaSis" EntityType="Self.tbCaSi" />
-          <EntitySet Name="tbMVs" EntityType="Self.tbMV" />
           <EntitySet Name="tbNguoiDungs" EntityType="Self.tbNguoiDung" />
           <EntitySet Name="tbNhacs" EntityType="Self.tbNhac" />
           <EntitySet Name="tbQuocGias" EntityType="Self.tbQuocGia" />
-          <EntitySet Name="tbTacGias" EntityType="Self.tbTacGia" />
           <EntitySet Name="tbTheLoais" EntityType="Self.tbTheLoai" />
-          <EntitySet Name="tbTieuSus" EntityType="Self.tbTieuSu" />
           <EntitySet Name="tbTraLois" EntityType="Self.tbTraLoi" />
           <EntitySet Name="tbTrinhBays" EntityType="Self.tbTrinhBay" />
           <EntitySet Name="tbYeuThiches" EntityType="Self.tbYeuThich" />
@@ -783,10 +602,6 @@
             <End Role="tbBinhLuan" EntitySet="tbBinhLuans" />
             <End Role="tbTraLoi" EntitySet="tbTraLois" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbCaSi_tbTieuSu" Association="Self.FK_tbCaSi_tbTieuSu">
-            <End Role="tbTieuSu" EntitySet="tbTieuSus" />
-            <End Role="tbCaSi" EntitySet="tbCaSis" />
-          </AssociationSet>
           <AssociationSet Name="FK_tbTrinhBay_tbCaSi" Association="Self.FK_tbTrinhBay_tbCaSi">
             <End Role="tbCaSi" EntitySet="tbCaSis" />
             <End Role="tbTrinhBay" EntitySet="tbTrinhBays" />
@@ -797,10 +612,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_tbNhac_tbQuocGia" Association="Self.FK_tbNhac_tbQuocGia">
             <End Role="tbQuocGia" EntitySet="tbQuocGias" />
-            <End Role="tbNhac" EntitySet="tbNhacs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbNhac_tbTacGia" Association="Self.FK_tbNhac_tbTacGia">
-            <End Role="tbTacGia" EntitySet="tbTacGias" />
             <End Role="tbNhac" EntitySet="tbNhacs" />
           </AssociationSet>
           <AssociationSet Name="FK_tbNhac_tbTheLoai" Association="Self.FK_tbNhac_tbTheLoai">
@@ -814,10 +625,6 @@
           <AssociationSet Name="FK_tbYeuThich_tbNhac" Association="Self.FK_tbYeuThich_tbNhac">
             <End Role="tbNhac" EntitySet="tbNhacs" />
             <End Role="tbYeuThich" EntitySet="tbYeuThiches" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbTacGia_tbTieuSu" Association="Self.FK_tbTacGia_tbTieuSu">
-            <End Role="tbTieuSu" EntitySet="tbTieuSus" />
-            <End Role="tbTacGia" EntitySet="tbTacGias" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -865,7 +672,6 @@
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
                 <ScalarProperty Name="MaND" ColumnName="MaND" />
-                <ScalarProperty Name="MV" ColumnName="MV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -875,19 +681,6 @@
                 <ScalarProperty Name="MaCaSi" ColumnName="MaCaSi" />
                 <ScalarProperty Name="TenCaSi" ColumnName="TenCaSi" />
                 <ScalarProperty Name="AnhCaSi" ColumnName="AnhCaSi" />
-                <ScalarProperty Name="MaTieuSu" ColumnName="MaTieuSu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbMVs">
-            <EntityTypeMapping TypeName="NgheNhacModel.tbMV">
-              <MappingFragment StoreEntitySet="tbMV">
-                <ScalarProperty Name="MaMV" ColumnName="MaMV" />
-                <ScalarProperty Name="TenMV" ColumnName="TenMV" />
-                <ScalarProperty Name="LinkNhung" ColumnName="LinkNhung" />
-                <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
-                <ScalarProperty Name="MaTacGia" ColumnName="MaTacGia" />
-                <ScalarProperty Name="LoiBaiHat" ColumnName="LoiBaiHat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -916,7 +709,6 @@
                 <ScalarProperty Name="LinkTaiVe" ColumnName="LinkTaiVe" />
                 <ScalarProperty Name="LuotLike" ColumnName="LuotLike" />
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
-                <ScalarProperty Name="MaTacGia" ColumnName="MaTacGia" />
                 <ScalarProperty Name="MaQuocGia" ColumnName="MaQuocGia" />
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
               </MappingFragment>
@@ -931,32 +723,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbTacGias">
-            <EntityTypeMapping TypeName="NgheNhacModel.tbTacGia">
-              <MappingFragment StoreEntitySet="tbTacGia">
-                <ScalarProperty Name="MaTacGia" ColumnName="MaTacGia" />
-                <ScalarProperty Name="TenTacGia" ColumnName="TenTacGia" />
-                <ScalarProperty Name="AnhTacGia" ColumnName="AnhTacGia" />
-                <ScalarProperty Name="MaTieuSu" ColumnName="MaTieuSu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbTheLoais">
             <EntityTypeMapping TypeName="NgheNhacModel.tbTheLoai">
               <MappingFragment StoreEntitySet="tbTheLoai">
                 <ScalarProperty Name="MaTheLoai" ColumnName="MaTheLoai" />
                 <ScalarProperty Name="TenTheLoai" ColumnName="TenTheLoai" />
                 <ScalarProperty Name="AnhTheloai" ColumnName="AnhTheloai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbTieuSus">
-            <EntityTypeMapping TypeName="NgheNhacModel.tbTieuSu">
-              <MappingFragment StoreEntitySet="tbTieuSu">
-                <ScalarProperty Name="MaTieuSu" ColumnName="MaTieuSu" />
-                <ScalarProperty Name="TenNgheSy" ColumnName="TenNgheSy" />
-                <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
-                <ScalarProperty Name="TieuSu" ColumnName="TieuSu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -968,7 +740,6 @@
                 <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
                 <ScalarProperty Name="MaBinhLuan" ColumnName="MaBinhLuan" />
                 <ScalarProperty Name="MaND" ColumnName="MaND" />
-                <ScalarProperty Name="MV" ColumnName="MV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -978,7 +749,6 @@
                 <ScalarProperty Name="MaTrinhBay" ColumnName="MaTrinhBay" />
                 <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
                 <ScalarProperty Name="MaCaSi" ColumnName="MaCaSi" />
-                <ScalarProperty Name="MV" ColumnName="MV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

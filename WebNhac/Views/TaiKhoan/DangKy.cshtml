@@ -1,4 +1,4 @@
-﻿@model Music_pv.Models.User
+﻿@model WebNhac.Models.tbNguoiDung
 
 
 
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="signup">
-        @using (Html.BeginForm("DangKy", "DangKy", FormMethod.Post))
+        @using (Html.BeginForm("DangKy", "TaiKhoan", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 

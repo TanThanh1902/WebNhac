@@ -23,9 +23,7 @@ namespace WebNhac.Models
         public int MaCaSi { get; set; }
         public string TenCaSi { get; set; }
         public string AnhCaSi { get; set; }
-        public Nullable<int> MaTieuSu { get; set; }
     
-        public virtual tbTieuSu tbTieuSu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbTrinhBay> tbTrinhBays { get; set; }
     }

@@ -25,7 +25,6 @@ namespace WebNhac.Models
         public Nullable<System.DateTime> NgayDang { get; set; }
         public Nullable<int> MaNhac { get; set; }
         public Nullable<int> MaND { get; set; }
-        public Nullable<bool> MV { get; set; }
     
         public virtual tbNguoiDung tbNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

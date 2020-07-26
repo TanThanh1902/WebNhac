@@ -31,14 +31,12 @@ namespace WebNhac.Models
         public string LinkTaiVe { get; set; }
         public Nullable<int> LuotLike { get; set; }
         public Nullable<int> MaTheLoai { get; set; }
-        public Nullable<int> MaTacGia { get; set; }
         public Nullable<int> MaQuocGia { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbBanner> tbBanners { get; set; }
         public virtual tbQuocGia tbQuocGia { get; set; }
-        public virtual tbTacGia tbTacGia { get; set; }
         public virtual tbTheLoai tbTheLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbTrinhBay> tbTrinhBays { get; set; }

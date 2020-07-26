@@ -17,7 +17,6 @@ namespace WebNhac.Models
         public int MaTrinhBay { get; set; }
         public Nullable<int> MaNhac { get; set; }
         public Nullable<int> MaCaSi { get; set; }
-        public Nullable<bool> MV { get; set; }
     
         public virtual tbCaSi tbCaSi { get; set; }
         public virtual tbNhac tbNhac { get; set; }

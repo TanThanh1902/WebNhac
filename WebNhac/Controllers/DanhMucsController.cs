@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Music_pv.Models;
+using WebNhac.Models;
 using PagedList;
 using PagedList.Mvc;
 
@@ -11,7 +11,7 @@ namespace Music_pv.Controllers
 {
     public class DanhMucsController : Controller
     {
-        QuanLyNhacEntities db = new QuanLyNhacEntities();
+        NgheNhacEntities db = new NgheNhacEntities();
         // GET: DanhMucs
         public ActionResult Index()
         {
@@ -19,27 +19,27 @@ namespace Music_pv.Controllers
         }
         public ActionResult BaiHatNgheNhieu(int? page)
         {
-            return View(db.DSNhacs.OrderByDescending(t => t.LuotNghe).ToPagedList(page ?? 1, 30));
+            return View();
         }
         public ActionResult DSCaSy(int? page)
         {
-            return View(db.DSCaSies.OrderBy(t => t.TenCaSy).ToPagedList(page ?? 1, 30));
+            return View();
         }
         public PartialViewResult DSTheLoaiN()
         {
-            return PartialView(db.DSTheLoais.ToList());
+            return PartialView();
         }
         public ActionResult NhacTheoTL(int? id, int? page)
         {
-            return View(db.DSNhacs.Where(t => t.IDTheLoai == id).OrderBy(t => t.TenBaiHat).ToPagedList(page ?? 1, 30));
+            return View();
         }
         public PartialViewResult DSQuocGiaN()
         {
-            return PartialView(db.QuocGias.ToList());
+            return PartialView();
         }
         public ActionResult Top100QG(int? id, int? page)
         {
-            return View(db.DSNhacs.Where(t => t.IDQuocGia == id).OrderByDescending(t => t.LuotNghe).Take(100).ToPagedList(page ?? 1, 30));
+            return View();
         }
     }
 }

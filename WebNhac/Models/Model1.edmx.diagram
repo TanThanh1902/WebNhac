@@ -10,13 +10,10 @@
         <EntityTypeShape EntityType="NgheNhacModel.tbBanner" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbBinhLuan" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbCaSi" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NgheNhacModel.tbMV" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbNguoiDung" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbNhac" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbQuocGia" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NgheNhacModel.tbTacGia" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbTheLoai" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NgheNhacModel.tbTieuSu" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbTraLoi" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbTrinhBay" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="NgheNhacModel.tbYeuThich" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
@@ -25,15 +22,12 @@
         <AssociationConnector Association="NgheNhacModel.FK_tbBanner_tbNhac" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbBinhLuan_tbNguoiDung" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbTraLoi_tbBinhLuan" ManuallyRouted="false" />
-        <AssociationConnector Association="NgheNhacModel.FK_tbCaSi_tbTieuSu" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbTrinhBay_tbCaSi" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbTraLoi_tbNguoiDung" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbNhac_tbQuocGia" ManuallyRouted="false" />
-        <AssociationConnector Association="NgheNhacModel.FK_tbNhac_tbTacGia" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbNhac_tbTheLoai" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbTrinhBay_tbNhac" ManuallyRouted="false" />
         <AssociationConnector Association="NgheNhacModel.FK_tbYeuThich_tbNhac" ManuallyRouted="false" />
-        <AssociationConnector Association="NgheNhacModel.FK_tbTacGia_tbTieuSu" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
