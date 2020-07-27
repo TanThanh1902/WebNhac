@@ -37,7 +37,7 @@
             @{
                 string action = ViewContext.RouteData.Values["Action"].ToString();
                 string id = "";
-                if(ViewContext.RouteData.Values["id"] != null)
+                if (ViewContext.RouteData.Values["id"] != null)
                 {
                     id = ViewContext.RouteData.Values["id"].ToString();
                 }
@@ -46,9 +46,13 @@
             {
                 @Html.PagedListPager(Model, page => Url.Action(action, new { page }))
             }
+            else if (action == "TimKiemBaiHat")
+            {
+                @Html.PagedListPager(Model, page => Url.Action(action, new { searchText = Request.QueryString["searchText"].ToString(), page }))
+            }
             else
             {
-                @Html.PagedListPager(Model, page => Url.Action(action, new { id = int.Parse(id.ToString()),page }))
+                @Html.PagedListPager(Model, page => Url.Action(action, new { id = int.Parse(id.ToString()), page }))
             }
         </center>
     </div>

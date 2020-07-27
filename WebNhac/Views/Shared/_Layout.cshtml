@@ -64,8 +64,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="top-search">
-                    <form class="navbar-form navbar-right" action="@Url.Action("TimKiem", "HienThi")">
-                        <input type="text" class="form-control" placeholder="Nhập tên bài hát của bạn..." name="tukhoa">
+                    <form class="navbar-form navbar-right" action="@Url.Action("TimKiemBaiHat", "BaiHat")" method="post">
+                        <input type="search" class="form-control" placeholder="Nhập tên bài hát của bạn..." name="searchText">
                         <input type="submit" value=" ">
                     </form>
                 </div>
@@ -150,7 +150,7 @@
                         @Html.Action("NhacAuMyMoiNhat", "Home")
                     </div>
                     <div class="recommended">
-                        @Html.Action("Top100", "Home")
+                        @Html.Action("Album", "Home")
                     </div>
                     <div class="recommended">
                         @Html.Action("DanhSachTheLoai", "Home")

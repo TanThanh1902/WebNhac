@@ -24,9 +24,7 @@ namespace WebNhac.Models
         public string TenAlbum { get; set; }
         public string AnhAlbum { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
-        public Nullable<int> MaND { get; set; }
     
-        public virtual tbNguoiDung tbNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbAlbumDSNhac> tbAlbumDSNhacs { get; set; }
     }

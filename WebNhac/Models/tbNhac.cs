@@ -19,8 +19,8 @@ namespace WebNhac.Models
         {
             this.tbAlbumCaNhans = new HashSet<tbAlbumCaNhan>();
             this.tbAlbumDSNhacs = new HashSet<tbAlbumDSNhac>();
-            this.tbTrinhBays = new HashSet<tbTrinhBay>();
             this.tbBinhLuans = new HashSet<tbBinhLuan>();
+            this.tbTrinhBays = new HashSet<tbTrinhBay>();
         }
     
         public int MaNhac { get; set; }
@@ -39,11 +39,11 @@ namespace WebNhac.Models
         public virtual ICollection<tbAlbumCaNhan> tbAlbumCaNhans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbAlbumDSNhac> tbAlbumDSNhacs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbBinhLuan> tbBinhLuans { get; set; }
         public virtual tbQuocGia tbQuocGia { get; set; }
         public virtual tbTheLoai tbTheLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbTrinhBay> tbTrinhBays { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbBinhLuan> tbBinhLuans { get; set; }
     }
 }

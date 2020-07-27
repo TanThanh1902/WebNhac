@@ -37,5 +37,6 @@ namespace WebNhac.Models
         public virtual DbSet<tbTheLoai> tbTheLoais { get; set; }
         public virtual DbSet<tbTraLoi> tbTraLois { get; set; }
         public virtual DbSet<tbTrinhBay> tbTrinhBays { get; set; }
+        public virtual DbSet<tbAdmin> tbAdmins { get; set; }
     }
 }

@@ -71,7 +71,7 @@ namespace Web_Nhac.Controllers
         {
             ViewBag.tus = "US - UK";
             List<tbAlbum> albums = db.tbAlbums.Take(8).ToList();
-            return PartialView("dsNhac", albums);
+            return PartialView(albums);
         }
         // BXH âm nhạc
         public PartialViewResult BXHVietNam()
