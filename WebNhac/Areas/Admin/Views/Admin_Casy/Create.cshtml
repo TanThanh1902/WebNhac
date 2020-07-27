@@ -1,0 +1,41 @@
+﻿@model WebNhac.Models.tbCaSi
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        @using (Html.BeginForm("Create", "Admin_Casy", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h2 style="text-align: center; color: red">Thêm ca sỹ</h2>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="control-label col-md-2">Tên ca sỹ</span>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenCaSi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.TenCaSi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <span class="control-label col-md-2">Ảnh ca sỹ</span>
+                    <div class="col-md-10">
+                        <input type="file" name="img_ca_sy" class="btn btn-danger" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Thêm" class="btn btn-danger w-100" style="background: #fc727a; color: white" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

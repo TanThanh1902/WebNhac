@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebNhac.Models.tbAlbum>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenAlbum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhAlbum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenAlbum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhAlbum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDang)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaAlbum }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaAlbum }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaAlbum })
+        </td>
+    </tr>
+}
+
+</table>

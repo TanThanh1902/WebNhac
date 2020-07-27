@@ -1,0 +1,44 @@
+﻿@model WebNhac.Models.tbQuocGia
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="content">
+        <div class="container-fluid">
+            @using (Html.BeginForm("Edit", "Admin_QuocGia", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h2 style="text-align: center; color: red">Cập nhật quốc gia</h2>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MaQuocGia)
+                    @Html.HiddenFor(model => model.AnhQuocGia)
+
+                    <div class="form-group">
+                        <span class="control-label col-md-2">Tên quốc gia</span>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenQuocGia, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.TenQuocGia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="control-label col-md-2">Ảnh quốc gia</span>
+                        <div class="col-md-10">
+                            <input type="file" name="img_quoc_gia" class="btn btn-danger" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cập nhật" class="btn btn-danger w-100" style="background: #fc727a; color: white" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

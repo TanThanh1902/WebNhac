@@ -1,0 +1,43 @@
+﻿@model WebNhac.Models.tbAlbum
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbAlbum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenAlbum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenAlbum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhAlbum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhAlbum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaAlbum }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

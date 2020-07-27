@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebNhac.Models.tbBinhLuan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungBinhLuan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbNguoiDung.TenND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbNhac.TenBaiHat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDungBinhLuan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbNguoiDung.TenND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbNhac.TenBaiHat)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaBinhLuan }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaBinhLuan }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaBinhLuan })
+        </td>
+    </tr>
+}
+
+</table>

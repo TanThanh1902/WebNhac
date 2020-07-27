@@ -1,0 +1,78 @@
+﻿@model PagedList.IPagedList<WebNhac.Models.tbCaSi>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int index = (Model.PageNumber - 1) * 10 + 1;
+    string xoa = "xoacasy";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <a href="@Url.Action("Create", "Admin_Casy")" type="button" class="btn btn-danger w-25" style="background: #fc727a; color: white">Thêm ca sỹ</a>
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    STT
+                </td>
+                <th>
+                    <span>Tên ca sỹ</span>
+                </th>
+                <th>
+                    <span>Ảnh ca sỹ</span>
+                </th>
+                <th>Tùy chọn</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @index
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenCaSi)
+                    </td>
+                    <td>
+                        <img src="~/Content/images/CaSy/@item.AnhCaSi" style="width: 140px; height: 120px" />
+                    </td>
+                    <td>
+                        <a href="/BaiHat/BaiHatTheoCaSy/@item.MaCaSi" target="_blank"><i class="fa fa-eye"></i></a>
+                        <a href="@Url.Action("Edit", "Admin_Casy", new { id = item.MaCaSi })"><i class="fa fa-edit"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#@xoa@item.MaCaSi"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                index++;
+
+                <!-- Modal -->
+                <div class="modal fade" id="@xoa@item.MaCaSi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: red">Xác nhận</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Ca sỹ này có chứa dữ liệu bài hát, bạn chắc chắn muốn xóa ca sỹ này và các bài hát liên quan ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 60%">Đóng</button>
+                                <a href="@Url.Action("DeleteConfirmed", "Admin_Casy", new { id = item.MaCaSi})" type="button" class="btn btn-danger" style="background: #fc727a; color: white">Xác nhận</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </table>
+        <center>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </center>
+    </div>
+</div>
+

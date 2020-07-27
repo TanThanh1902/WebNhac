@@ -1,0 +1,51 @@
+﻿@model WebNhac.Models.tbBinhLuan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbBinhLuan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungBinhLuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungBinhLuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbNguoiDung.TenND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbNguoiDung.TenND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbNhac.TenBaiHat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbNhac.TenBaiHat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBinhLuan }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

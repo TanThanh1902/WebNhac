@@ -1,0 +1,99 @@
+﻿@model WebNhac.Models.tbNhac
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbNhac</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenBaiHat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenBaiHat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoiBaiHat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoiBaiHat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotXem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotXem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkTaiVe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkTaiVe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotLike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotLike)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbQuocGia.TenQuocGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbQuocGia.TenQuocGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbTheLoai.TenTheLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbTheLoai.TenTheLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNhac }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

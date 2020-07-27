@@ -44,7 +44,7 @@
             <a href="~/Content/fileNhac/@Model.Nhac" class="tuychon"> <i class="fas fa-download" style="font-size: 25px;"><span style="font-size: 15px;">Tải về</span></i></a>
             &nbsp; &nbsp;
             <a href="#" class="tuychon"> <i class="fas fa-share-alt" style="font-size: 25px;"><span style="font-size: 15px;">Chia sẻ</span></i></a>
-            <ul class="list-group" style="margin: 4%;">
+            <ul class="list-group" style="margin: 4%;" id="binhluan">
                 <li class="list-group-item active" style="font-size: 20px">Lời bài hát: @Model.TenBaiHat<br />Nhạc sỹ: không có</li>
                 <li class="list-group-item" style="font-size: 15px;"><p>@Model.LoiBaiHat</p></li>
                 <hr />
@@ -67,20 +67,9 @@
                         <input type="submit" value="Đăng nhập để bình luận " style="width: 100%; height: 50px" class="btn btn-danger" />
                     }
                 </li>
-                @foreach (var binhluan in Model.tbBinhLuans)
-                {
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <img src="~/Content/images/CaSy/yua_mikami.jpg" class=" img-circle" style="width: 100%; height: 110px" />
-                            </div>
-                            <ul class="col-sm-10" style="list-style-type: none">
-                                <li><b style="float: left; font-size: 20px">@binhluan.tbNguoiDung.TenND</b></li><br /><br /><br />
-                                <li><p style="float: left; font-size: 15px">@binhluan.NoiDungBinhLuan</p></li>
-                            </ul>
-                        </div>
-                    </li>
-                }
+                <div id="content_binhluan">
+                    @Html.Action("dsBinhLuan", "BinhLuans", new { id = Model.MaNhac})
+                </div>
             </ul>
         </center>
     </div>

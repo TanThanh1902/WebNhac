@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebNhac.Models.tbTheLoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int index = 1;
+    string xoa = "xoachude";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <a href="@Url.Action("Create", "Admin_ChuDe")" type="button" class="btn btn-danger w-25" style="background: #fc727a; color: white">Thêm chủ đề</a>
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    STT
+                </td>
+                <th>
+                    <span>Tên chủ đề</span>
+                </th>
+                <th>
+                    <span>Ảnh chủ đề</span>
+                </th>
+                <th>Tùy chọn</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @index
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTheLoai)
+                    </td>
+                    <td>
+                        <img src="~/Content/images/ChuDe/@item.AnhTheloai" style="width: 140px; height: 120px" />
+                    </td>
+                    <td>
+                        <a href="/BaiHat/BaiHatTheoChuDe/@item.MaTheLoai" target="_blank"><i class="fa fa-eye"></i></a> 
+                        <a href="@Url.Action("Edit", "Admin_ChuDe", new { id = item.MaTheLoai })"><i class="fa fa-edit"></i></a> 
+                        <a href="#" data-toggle="modal" data-target="#@xoa@item.MaTheLoai"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                index++;
+
+                <!-- Modal -->
+                <div class="modal fade" id="@xoa@item.MaTheLoai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: red">Xác nhận</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Thể loại có chứa dữ liệu bài hát, bạn chắc chắn muốn xóa chủ đề này và các bài hát liên quan ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 60%">Đóng</button>
+                                <a href="@Url.Action("DeleteConfirmed", "Admin_ChuDe", new { id = item.MaTheLoai})" type="button" class="btn btn-danger" style="background: #fc727a; color: white">Xác nhận</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </table>
+    </div>
+</div>
+
