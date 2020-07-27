@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace Web_Nhac.Controllers
         NgheNhacEntities db = new NgheNhacEntities();
         public ActionResult Index()
         {
+            ViewBag.Title = "Trang chủ";
             return View();
         }
         public PartialViewResult Banner()
@@ -23,61 +25,88 @@ namespace Web_Nhac.Controllers
             return PartialView();
         }
         // danh sách nhạc
+        public PartialViewResult MoiPhatHanh()
+        {
+            ViewBag.tus = "Mới phát hành";
+            List<tbNhac> nhacs = db.tbNhacs.OrderByDescending(n => n.NgayDang).Take(8).ToList();
+            return PartialView("dsNhac", nhacs);
+        }
         public PartialViewResult NgheGiHomNay()
         {
-            List<tbNhac> nhacs = db.tbNhacs.OrderByDescending(n => n.NgayDang).Take(12).ToList();
+            ViewBag.tus = "Nghe gì hôm nay";
+            List<tbNhac> nhacs = db.tbNhacs.OrderByDescending(n => n.NgayDang).Take(8).ToList();
+            return PartialView("dsNhac", nhacs);
+        }
+        public PartialViewResult ThinhHanh()
+        {
+            ViewBag.tus = "Thịnh hành";
+            List<tbNhac> nhacs = db.tbNhacs.Where(t => DbFunctions.DiffDays(t.NgayDang, DateTime.Now) <= 30).OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
         }
         public PartialViewResult BaiHatNgheNhieu()
         {
-            List<tbNhac> nhacs = db.tbNhacs.OrderByDescending(n => n.LuotXem).Take(12).ToList();
+            ViewBag.tus = "Những bài hát nghe nhiều";
+            List<tbNhac> nhacs = db.tbNhacs.OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
         }
-        public PartialViewResult VietNamMoiNhat()
+        public PartialViewResult NhacVietMoiNhat()
         {
-            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 1).OrderByDescending(n => n.LuotXem).Take(12).ToList();
+            ViewBag.tus = "Nhạc Việt";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 1).OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
         }
-        public PartialViewResult HanQuocMoiNhat()
+        public PartialViewResult NhacHanMoiNhat()
         {
-            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 2).OrderByDescending(n => n.LuotXem).Take(12).ToList();
+            ViewBag.tus = "KPOP";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 2).OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
         }
-        public PartialViewResult AuMyMoiNhat()
+        public PartialViewResult NhacAuMyMoiNhat()
         {
-            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 3).OrderByDescending(n => n.LuotXem).Take(12).ToList();
+            ViewBag.tus = "US - UK";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 3).OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
+        }
+        public PartialViewResult Album()
+        {
+            ViewBag.tus = "US - UK";
+            List<tbAlbum> albums = db.tbAlbums.Take(8).ToList();
+            return PartialView("dsNhac", albums);
         }
         // BXH âm nhạc
         public PartialViewResult BXHVietNam()
         {
-            return PartialView(db.tbNhacs.Where(n => n.MaQuocGia == 1).OrderByDescending(n => n.LuotXem).Take(10).ToList());
+            ViewBag.bhx = "BXH Việt Nam";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 1).OrderByDescending(n => n.LuotXem).Take(7).ToList();
+            return PartialView("dsBHX", nhacs);
         }
         public PartialViewResult BXHHanQuoc()
         {
-            return PartialView(db.tbNhacs.Where(n => n.MaQuocGia == 2).OrderByDescending(n => n.LuotXem).Take(10).ToList());
+            ViewBag.bhx = "BXH Hàn Quốc";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 4).OrderByDescending(n => n.LuotXem).Take(7).ToList();
+            return PartialView("dsBHX", nhacs);
         }
         public PartialViewResult BXHAuMy()
         {
-            return PartialView(db.tbNhacs.Where(n => n.MaQuocGia == 3).OrderByDescending(n => n.LuotXem).Take(10).ToList());
-        }
-        // Top 100 album
-        public ActionResult Top100BaiHatNhacTre()
-        {
-            return View();
-        }
-        public PartialViewResult LinkNhacTop100NhacTre()
-        {
-            return PartialView();
+            ViewBag.bhx = "BXH Âu Mỹ";
+            List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 3).OrderByDescending(n => n.LuotXem).Take(7).ToList();
+            return PartialView("dsBHX", nhacs);
         }
         // danh mục âm nhạc
-        public PartialViewResult DanhSachCaSy()
-        {
-            return PartialView(db.tbCaSis.ToList());
-        }
         public PartialViewResult DanhSachTheLoai()
         {
-            return PartialView(db.tbTheLoais.ToList());
+            List<tbTheLoai> theLoais = db.tbTheLoais.Take(8).ToList();
+            return PartialView(theLoais);
+        }
+        public PartialViewResult DanhSachCaSy()
+        {
+            List<tbCaSi> caSis = db.tbCaSis.Take(8).ToList();
+            return PartialView(caSis);
+        }
+        public PartialViewResult DanhSachQuocGia()
+        {
+            List<tbQuocGia> quocGias = db.tbQuocGias.Take(8).ToList();
+            return PartialView(quocGias);
         }
     }
 }

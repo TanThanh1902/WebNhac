@@ -1,0 +1,57 @@
+﻿@using WebNhac.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<tbAlbumCaNhan>
+
+@{
+    ViewBag.Title = "Album cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="recommended-grids english-grid" style="padding-left: 31px; padding-right: 20px">
+    <div class="recommended-info">
+        <ul class="list-group">
+            <li class="list-group-item menu">
+                <span><a href="/Home/Index"><b>Trang chủ</b></a>&nbsp; / &nbsp;<a href="@Request.RawUrl"><b>@ViewBag.Title - </b></a><b>@ViewBag.ketqua</b></span>
+            </li>
+        </ul>
+        <div class="clearfix"> </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 resent-grid recommended-grid show-video-grid" style="margin-top: 1%;min-height: 200px">
+            <div class="resent-grid-img recommended-grid-info">
+                <a href="@Url.Action("ChiTietBaiHat", "BaiHat", new { id = item.tbNhac.MaNhac})"><img src="@Url.Content("~/Content/images/BaiHat/" + item.tbNhac.HinhAnh)" alt="" style="width: 100%; height: 120px" /></a>
+            </div>
+            <div class="resent-grid-info recommended-grid-info info_casy" style="margin-bottom: 4%">
+                <br />
+                <p style="width: 100%;height: 50px"><a href="#" style="font-size: 15px; color: black"><i class="fa fa-music">&nbsp;&nbsp;&nbsp;</i><b>@item.tbNhac.TenBaiHat</b></a></p>
+                <p class="author" style="width: 100%;height: 50px"><a href="@Url.Action("ChiTietBaiHat", "BaiHat", new { id = item.tbNhac.MaNhac})" style="font-size: 12px"><i class="fa fa-microphone">&nbsp;&nbsp;&nbsp;</i>@Html.Action("CaSyTheoNhac", "CaSy", new { id = item.tbNhac.MaNhac })</a></p>
+                <p class="views">@item.tbNhac.LuotXem Lượt nghe - <a href="@Url.Action("XoaAlBumCaNhan", "BoSuuTap", new { id = item.tbNhac.MaNhac})" style="font-size: 13px;color: #9E9E9E">xóa khỏi list</a></p>
+            </div>
+        </div>
+    }
+    <div class="clearfix"> </div>
+    <div style="margin-top: 20px">
+        <center>
+            @{
+                string action = ViewContext.RouteData.Values["Action"].ToString();
+                string id = "";
+                if (ViewContext.RouteData.Values["id"] != null)
+                {
+                    id = ViewContext.RouteData.Values["id"].ToString();
+                }
+            }
+            @if (action == "TatCaBaiHat")
+            {
+                @Html.PagedListPager(Model, page => Url.Action(action, new { page }))
+            }
+            else
+            {
+                @Html.PagedListPager(Model, page => Url.Action(action, new { id = int.Parse(id.ToString()), page }))
+            }
+        </center>
+    </div>
+</div>
+

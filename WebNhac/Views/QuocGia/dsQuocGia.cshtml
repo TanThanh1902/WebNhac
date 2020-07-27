@@ -1,0 +1,20 @@
+﻿@using WebNhac.Models;
+@model List<tbQuocGia>
+@{
+    bool active = Request.RawUrl.Contains("BaiHatTheoQuocGia");
+}
+<ul class="cl-effect-3" style="@(active ? "display: block" : "display: none")" id="quocgia_slide_down">
+    @foreach (var item in Model)
+    {
+        if (active && ViewContext.RouteData.Values["id"].Equals(item.MaQuocGia.ToString()))
+        {
+            <li class="active"><a href="@Url.Action("BaiHatTheoQuocGia", "BaiHat", new { id = item.MaQuocGia})">@item.TenQuocGia </a></li>
+        }
+        else
+        {
+            <li><a href="@Url.Action("BaiHatTheoQuocGia", "BaiHat", new { id = item.MaQuocGia})">@item.TenQuocGia </a></li>
+        }
+    }
+    <li><a href="@Url.Action("TatCaQuocGia", "QuocGia")">Xem tất cả</a></li>
+</ul>
+

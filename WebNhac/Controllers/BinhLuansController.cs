@@ -12,10 +12,18 @@ namespace Music_pv.Controllers
     {
         NgheNhacEntities db = new NgheNhacEntities();
         // GET: BinhLuans
-        public ActionResult Index(int? id)
+        public ActionResult ThemBinhLuan(string NoiDungBinhLuan, int MaNhac)
         {
-            var binhluan = db.tbBinhLuans.Where(t => t.MaNhac == id).Include(t => t.tbTraLois).OrderByDescending(t => t.NgayDang).ToList();
-            return View(binhluan);
+            tbBinhLuan binhLuan = new tbBinhLuan()
+            {
+                NoiDungBinhLuan = NoiDungBinhLuan,
+                MaNhac = MaNhac,
+                MaND = int.Parse(Request.Cookies["id"].Value.ToString()),
+                NgayDang = DateTime.Now
+            };
+            db.tbBinhLuans.Add(binhLuan);
+            db.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

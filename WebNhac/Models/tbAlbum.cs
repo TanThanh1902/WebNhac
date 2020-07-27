@@ -17,7 +17,7 @@ namespace WebNhac.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbAlbum()
         {
-            this.tbYeuThiches = new HashSet<tbYeuThich>();
+            this.tbAlbumDSNhacs = new HashSet<tbAlbumDSNhac>();
         }
     
         public int MaAlbum { get; set; }
@@ -28,6 +28,6 @@ namespace WebNhac.Models
     
         public virtual tbNguoiDung tbNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbYeuThich> tbYeuThiches { get; set; }
+        public virtual ICollection<tbAlbumDSNhac> tbAlbumDSNhacs { get; set; }
     }
 }

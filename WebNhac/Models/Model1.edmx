@@ -25,12 +25,21 @@
           <Property Name="NgayDang" Type="datetime" />
           <Property Name="MaND" Type="int" />
         </EntityType>
-        <EntityType Name="tbBanner">
+        <EntityType Name="tbAlbumCaNhan">
           <Key>
-            <PropertyRef Name="MaBanner" />
+            <PropertyRef Name="MaAlbumCaNhan" />
           </Key>
-          <Property Name="MaBanner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Banner" Type="nvarchar(max)" />
+          <Property Name="MaAlbumCaNhan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNhac" Type="int" />
+          <Property Name="NgayThem" Type="datetime" />
+          <Property Name="MaNguoiDung" Type="int" />
+        </EntityType>
+        <EntityType Name="tbAlbumDSNhac">
+          <Key>
+            <PropertyRef Name="MaAlbumDSNhac" />
+          </Key>
+          <Property Name="MaAlbumDSNhac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaAlbum" Type="int" />
           <Property Name="MaNhac" Type="int" />
         </EntityType>
         <EntityType Name="tbBinhLuan">
@@ -113,14 +122,6 @@
           <Property Name="MaNhac" Type="int" />
           <Property Name="MaCaSi" Type="int" />
         </EntityType>
-        <EntityType Name="tbYeuThich">
-          <Key>
-            <PropertyRef Name="MaYeuThich" />
-          </Key>
-          <Property Name="MaYeuThich" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaNhac" Type="int" />
-          <Property Name="MaAlbum" Type="int" />
-        </EntityType>
         <Association Name="FK_tbAlbum_tbNguoiDung">
           <End Role="tbNguoiDung" Type="Self.tbNguoiDung" Multiplicity="0..1" />
           <End Role="tbAlbum" Type="Self.tbAlbum" Multiplicity="*" />
@@ -133,14 +134,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbBanner_tbNhac">
+        <Association Name="FK_tbAlbumCaNhan_tbNhac">
           <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
-          <End Role="tbBanner" Type="Self.tbBanner" Multiplicity="*" />
+          <End Role="tbAlbumCaNhan" Type="Self.tbAlbumCaNhan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbNhac">
               <PropertyRef Name="MaNhac" />
             </Principal>
-            <Dependent Role="tbBanner">
+            <Dependent Role="tbAlbumCaNhan">
+              <PropertyRef Name="MaNhac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAlbumDSNhac_tbAlbum">
+          <End Role="tbAlbum" Type="Self.tbAlbum" Multiplicity="0..1" />
+          <End Role="tbAlbumDSNhac" Type="Self.tbAlbumDSNhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAlbum">
+              <PropertyRef Name="MaAlbum" />
+            </Principal>
+            <Dependent Role="tbAlbumDSNhac">
+              <PropertyRef Name="MaAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAlbumDSNhac_tbNhac">
+          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
+          <End Role="tbAlbumDSNhac" Type="Self.tbAlbumDSNhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhac">
+              <PropertyRef Name="MaNhac" />
+            </Principal>
+            <Dependent Role="tbAlbumDSNhac">
               <PropertyRef Name="MaNhac" />
             </Dependent>
           </ReferentialConstraint>
@@ -154,6 +179,18 @@
             </Principal>
             <Dependent Role="tbBinhLuan">
               <PropertyRef Name="MaND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbBinhLuan_tbNhac">
+          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
+          <End Role="tbBinhLuan" Type="Self.tbBinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhac">
+              <PropertyRef Name="MaNhac" />
+            </Principal>
+            <Dependent Role="tbBinhLuan">
+              <PropertyRef Name="MaNhac" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -229,22 +266,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbYeuThich_tbAlbum">
-          <End Role="tbAlbum" Type="Self.tbAlbum" Multiplicity="0..1" />
-          <End Role="tbYeuThich" Type="Self.tbYeuThich" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAlbum">
-              <PropertyRef Name="MaAlbum" />
-            </Principal>
-            <Dependent Role="tbYeuThich">
-              <PropertyRef Name="MaAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NgheNhacModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAlbum" EntityType="Self.tbAlbum" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbBanner" EntityType="Self.tbBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbAlbumCaNhan" EntityType="Self.tbAlbumCaNhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbAlbumDSNhac" EntityType="Self.tbAlbumDSNhac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbBinhLuan" EntityType="Self.tbBinhLuan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCaSi" EntityType="Self.tbCaSi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbNguoiDung" EntityType="Self.tbNguoiDung" Schema="dbo" store:Type="Tables" />
@@ -253,17 +279,28 @@
           <EntitySet Name="tbTheLoai" EntityType="Self.tbTheLoai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTraLoi" EntityType="Self.tbTraLoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTrinhBay" EntityType="Self.tbTrinhBay" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbYeuThich" EntityType="Self.tbYeuThich" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tbAlbum_tbNguoiDung" Association="Self.FK_tbAlbum_tbNguoiDung">
             <End Role="tbNguoiDung" EntitySet="tbNguoiDung" />
             <End Role="tbAlbum" EntitySet="tbAlbum" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbBanner_tbNhac" Association="Self.FK_tbBanner_tbNhac">
+          <AssociationSet Name="FK_tbAlbumCaNhan_tbNhac" Association="Self.FK_tbAlbumCaNhan_tbNhac">
             <End Role="tbNhac" EntitySet="tbNhac" />
-            <End Role="tbBanner" EntitySet="tbBanner" />
+            <End Role="tbAlbumCaNhan" EntitySet="tbAlbumCaNhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAlbumDSNhac_tbAlbum" Association="Self.FK_tbAlbumDSNhac_tbAlbum">
+            <End Role="tbAlbum" EntitySet="tbAlbum" />
+            <End Role="tbAlbumDSNhac" EntitySet="tbAlbumDSNhac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAlbumDSNhac_tbNhac" Association="Self.FK_tbAlbumDSNhac_tbNhac">
+            <End Role="tbNhac" EntitySet="tbNhac" />
+            <End Role="tbAlbumDSNhac" EntitySet="tbAlbumDSNhac" />
           </AssociationSet>
           <AssociationSet Name="FK_tbBinhLuan_tbNguoiDung" Association="Self.FK_tbBinhLuan_tbNguoiDung">
             <End Role="tbNguoiDung" EntitySet="tbNguoiDung" />
+            <End Role="tbBinhLuan" EntitySet="tbBinhLuan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbBinhLuan_tbNhac" Association="Self.FK_tbBinhLuan_tbNhac">
+            <End Role="tbNhac" EntitySet="tbNhac" />
             <End Role="tbBinhLuan" EntitySet="tbBinhLuan" />
           </AssociationSet>
           <AssociationSet Name="FK_tbNhac_tbQuocGia" Association="Self.FK_tbNhac_tbQuocGia">
@@ -290,10 +327,6 @@
             <End Role="tbNhac" EntitySet="tbNhac" />
             <End Role="tbTrinhBay" EntitySet="tbTrinhBay" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbYeuThich_tbAlbum" Association="Self.FK_tbYeuThich_tbAlbum">
-            <End Role="tbAlbum" EntitySet="tbAlbum" />
-            <End Role="tbYeuThich" EntitySet="tbYeuThich" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -319,16 +352,27 @@
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
           <Property Name="MaND" Type="Int32" />
           <NavigationProperty Name="tbNguoiDung" Relationship="Self.FK_tbAlbum_tbNguoiDung" FromRole="tbAlbum" ToRole="tbNguoiDung" />
-          <NavigationProperty Name="tbYeuThiches" Relationship="Self.FK_tbYeuThich_tbAlbum" FromRole="tbAlbum" ToRole="tbYeuThich" />
+          <NavigationProperty Name="tbAlbumDSNhacs" Relationship="Self.FK_tbAlbumDSNhac_tbAlbum" FromRole="tbAlbum" ToRole="tbAlbumDSNhac" />
         </EntityType>
-        <EntityType Name="tbBanner">
+        <EntityType Name="tbAlbumCaNhan">
           <Key>
-            <PropertyRef Name="MaBanner" />
+            <PropertyRef Name="MaAlbumCaNhan" />
           </Key>
-          <Property Name="MaBanner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Banner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaAlbumCaNhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaNhac" Type="Int32" />
-          <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbBanner_tbNhac" FromRole="tbBanner" ToRole="tbNhac" />
+          <Property Name="NgayThem" Type="DateTime" Precision="3" />
+          <Property Name="MaNguoiDung" Type="Int32" />
+          <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbAlbumCaNhan_tbNhac" FromRole="tbAlbumCaNhan" ToRole="tbNhac" />
+        </EntityType>
+        <EntityType Name="tbAlbumDSNhac">
+          <Key>
+            <PropertyRef Name="MaAlbumDSNhac" />
+          </Key>
+          <Property Name="MaAlbumDSNhac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaAlbum" Type="Int32" />
+          <Property Name="MaNhac" Type="Int32" />
+          <NavigationProperty Name="tbAlbum" Relationship="Self.FK_tbAlbumDSNhac_tbAlbum" FromRole="tbAlbumDSNhac" ToRole="tbAlbum" />
+          <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbAlbumDSNhac_tbNhac" FromRole="tbAlbumDSNhac" ToRole="tbNhac" />
         </EntityType>
         <EntityType Name="tbBinhLuan">
           <Key>
@@ -341,6 +385,7 @@
           <Property Name="MaND" Type="Int32" />
           <NavigationProperty Name="tbNguoiDung" Relationship="Self.FK_tbBinhLuan_tbNguoiDung" FromRole="tbBinhLuan" ToRole="tbNguoiDung" />
           <NavigationProperty Name="tbTraLois" Relationship="Self.FK_tbTraLoi_tbBinhLuan" FromRole="tbBinhLuan" ToRole="tbTraLoi" />
+          <NavigationProperty Name="tbNhac" Relationship="NgheNhacModel.FK_tbBinhLuan_tbNhac" FromRole="tbBinhLuan" ToRole="tbNhac" />
         </EntityType>
         <EntityType Name="tbCaSi">
           <Key>
@@ -381,11 +426,12 @@
           <Property Name="MaTheLoai" Type="Int32" />
           <Property Name="MaQuocGia" Type="Int32" />
           <Property Name="NgayDang" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tbBanners" Relationship="Self.FK_tbBanner_tbNhac" FromRole="tbNhac" ToRole="tbBanner" />
+          <NavigationProperty Name="tbAlbumCaNhans" Relationship="Self.FK_tbAlbumCaNhan_tbNhac" FromRole="tbNhac" ToRole="tbAlbumCaNhan" />
+          <NavigationProperty Name="tbAlbumDSNhacs" Relationship="Self.FK_tbAlbumDSNhac_tbNhac" FromRole="tbNhac" ToRole="tbAlbumDSNhac" />
           <NavigationProperty Name="tbQuocGia" Relationship="Self.FK_tbNhac_tbQuocGia" FromRole="tbNhac" ToRole="tbQuocGia" />
           <NavigationProperty Name="tbTheLoai" Relationship="Self.FK_tbNhac_tbTheLoai" FromRole="tbNhac" ToRole="tbTheLoai" />
           <NavigationProperty Name="tbTrinhBays" Relationship="Self.FK_tbTrinhBay_tbNhac" FromRole="tbNhac" ToRole="tbTrinhBay" />
-          <NavigationProperty Name="tbYeuThiches" Relationship="Self.FK_tbYeuThich_tbNhac" FromRole="tbNhac" ToRole="tbYeuThich" />
+          <NavigationProperty Name="tbBinhLuans" Relationship="NgheNhacModel.FK_tbBinhLuan_tbNhac" FromRole="tbNhac" ToRole="tbBinhLuan" />
         </EntityType>
         <EntityType Name="tbQuocGia">
           <Key>
@@ -427,16 +473,6 @@
           <NavigationProperty Name="tbCaSi" Relationship="Self.FK_tbTrinhBay_tbCaSi" FromRole="tbTrinhBay" ToRole="tbCaSi" />
           <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbTrinhBay_tbNhac" FromRole="tbTrinhBay" ToRole="tbNhac" />
         </EntityType>
-        <EntityType Name="tbYeuThich">
-          <Key>
-            <PropertyRef Name="MaYeuThich" />
-          </Key>
-          <Property Name="MaYeuThich" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaNhac" Type="Int32" />
-          <Property Name="MaAlbum" Type="Int32" />
-          <NavigationProperty Name="tbAlbum" Relationship="Self.FK_tbYeuThich_tbAlbum" FromRole="tbYeuThich" ToRole="tbAlbum" />
-          <NavigationProperty Name="tbNhac" Relationship="Self.FK_tbYeuThich_tbNhac" FromRole="tbYeuThich" ToRole="tbNhac" />
-        </EntityType>
         <Association Name="FK_tbAlbum_tbNguoiDung">
           <End Role="tbNguoiDung" Type="Self.tbNguoiDung" Multiplicity="0..1" />
           <End Role="tbAlbum" Type="Self.tbAlbum" Multiplicity="*" />
@@ -449,26 +485,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbYeuThich_tbAlbum">
+        <Association Name="FK_tbAlbumDSNhac_tbAlbum">
           <End Role="tbAlbum" Type="Self.tbAlbum" Multiplicity="0..1" />
-          <End Role="tbYeuThich" Type="Self.tbYeuThich" Multiplicity="*" />
+          <End Role="tbAlbumDSNhac" Type="Self.tbAlbumDSNhac" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbAlbum">
               <PropertyRef Name="MaAlbum" />
             </Principal>
-            <Dependent Role="tbYeuThich">
+            <Dependent Role="tbAlbumDSNhac">
               <PropertyRef Name="MaAlbum" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbBanner_tbNhac">
+        <Association Name="FK_tbAlbumCaNhan_tbNhac">
           <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
-          <End Role="tbBanner" Type="Self.tbBanner" Multiplicity="*" />
+          <End Role="tbAlbumCaNhan" Type="Self.tbAlbumCaNhan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbNhac">
               <PropertyRef Name="MaNhac" />
             </Principal>
-            <Dependent Role="tbBanner">
+            <Dependent Role="tbAlbumCaNhan">
+              <PropertyRef Name="MaNhac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAlbumDSNhac_tbNhac">
+          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
+          <End Role="tbAlbumDSNhac" Type="Self.tbAlbumDSNhac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhac">
+              <PropertyRef Name="MaNhac" />
+            </Principal>
+            <Dependent Role="tbAlbumDSNhac">
               <PropertyRef Name="MaNhac" />
             </Dependent>
           </ReferentialConstraint>
@@ -557,22 +605,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbYeuThich_tbNhac">
-          <End Role="tbNhac" Type="Self.tbNhac" Multiplicity="0..1" />
-          <End Role="tbYeuThich" Type="Self.tbYeuThich" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbNhac">
-              <PropertyRef Name="MaNhac" />
-            </Principal>
-            <Dependent Role="tbYeuThich">
-              <PropertyRef Name="MaNhac" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NgheNhacEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tbAlbums" EntityType="Self.tbAlbum" />
-          <EntitySet Name="tbBanners" EntityType="Self.tbBanner" />
+          <EntitySet Name="tbAlbumCaNhans" EntityType="Self.tbAlbumCaNhan" />
+          <EntitySet Name="tbAlbumDSNhacs" EntityType="Self.tbAlbumDSNhac" />
           <EntitySet Name="tbBinhLuans" EntityType="Self.tbBinhLuan" />
           <EntitySet Name="tbCaSis" EntityType="Self.tbCaSi" />
           <EntitySet Name="tbNguoiDungs" EntityType="Self.tbNguoiDung" />
@@ -581,18 +618,21 @@
           <EntitySet Name="tbTheLoais" EntityType="Self.tbTheLoai" />
           <EntitySet Name="tbTraLois" EntityType="Self.tbTraLoi" />
           <EntitySet Name="tbTrinhBays" EntityType="Self.tbTrinhBay" />
-          <EntitySet Name="tbYeuThiches" EntityType="Self.tbYeuThich" />
           <AssociationSet Name="FK_tbAlbum_tbNguoiDung" Association="Self.FK_tbAlbum_tbNguoiDung">
             <End Role="tbNguoiDung" EntitySet="tbNguoiDungs" />
             <End Role="tbAlbum" EntitySet="tbAlbums" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbYeuThich_tbAlbum" Association="Self.FK_tbYeuThich_tbAlbum">
+          <AssociationSet Name="FK_tbAlbumDSNhac_tbAlbum" Association="Self.FK_tbAlbumDSNhac_tbAlbum">
             <End Role="tbAlbum" EntitySet="tbAlbums" />
-            <End Role="tbYeuThich" EntitySet="tbYeuThiches" />
+            <End Role="tbAlbumDSNhac" EntitySet="tbAlbumDSNhacs" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbBanner_tbNhac" Association="Self.FK_tbBanner_tbNhac">
+          <AssociationSet Name="FK_tbAlbumCaNhan_tbNhac" Association="Self.FK_tbAlbumCaNhan_tbNhac">
             <End Role="tbNhac" EntitySet="tbNhacs" />
-            <End Role="tbBanner" EntitySet="tbBanners" />
+            <End Role="tbAlbumCaNhan" EntitySet="tbAlbumCaNhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAlbumDSNhac_tbNhac" Association="Self.FK_tbAlbumDSNhac_tbNhac">
+            <End Role="tbNhac" EntitySet="tbNhacs" />
+            <End Role="tbAlbumDSNhac" EntitySet="tbAlbumDSNhacs" />
           </AssociationSet>
           <AssociationSet Name="FK_tbBinhLuan_tbNguoiDung" Association="Self.FK_tbBinhLuan_tbNguoiDung">
             <End Role="tbNguoiDung" EntitySet="tbNguoiDungs" />
@@ -622,11 +662,23 @@
             <End Role="tbNhac" EntitySet="tbNhacs" />
             <End Role="tbTrinhBay" EntitySet="tbTrinhBays" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbYeuThich_tbNhac" Association="Self.FK_tbYeuThich_tbNhac">
+          <AssociationSet Name="FK_tbBinhLuan_tbNhac" Association="NgheNhacModel.FK_tbBinhLuan_tbNhac">
             <End Role="tbNhac" EntitySet="tbNhacs" />
-            <End Role="tbYeuThich" EntitySet="tbYeuThiches" />
+            <End Role="tbBinhLuan" EntitySet="tbBinhLuans" />
           </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_tbBinhLuan_tbNhac">
+          <End Type="NgheNhacModel.tbNhac" Role="tbNhac" Multiplicity="0..1" />
+          <End Type="NgheNhacModel.tbBinhLuan" Role="tbBinhLuan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbNhac">
+              <PropertyRef Name="MaNhac" />
+            </Principal>
+            <Dependent Role="tbBinhLuan">
+              <PropertyRef Name="MaNhac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -655,11 +707,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbBanners">
-            <EntityTypeMapping TypeName="NgheNhacModel.tbBanner">
-              <MappingFragment StoreEntitySet="tbBanner">
-                <ScalarProperty Name="MaBanner" ColumnName="MaBanner" />
-                <ScalarProperty Name="Banner" ColumnName="Banner" />
+          <EntitySetMapping Name="tbAlbumCaNhans">
+            <EntityTypeMapping TypeName="NgheNhacModel.tbAlbumCaNhan">
+              <MappingFragment StoreEntitySet="tbAlbumCaNhan">
+                <ScalarProperty Name="MaAlbumCaNhan" ColumnName="MaAlbumCaNhan" />
+                <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
+                <ScalarProperty Name="NgayThem" ColumnName="NgayThem" />
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAlbumDSNhacs">
+            <EntityTypeMapping TypeName="NgheNhacModel.tbAlbumDSNhac">
+              <MappingFragment StoreEntitySet="tbAlbumDSNhac">
+                <ScalarProperty Name="MaAlbumDSNhac" ColumnName="MaAlbumDSNhac" />
+                <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
                 <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -749,15 +811,6 @@
                 <ScalarProperty Name="MaTrinhBay" ColumnName="MaTrinhBay" />
                 <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
                 <ScalarProperty Name="MaCaSi" ColumnName="MaCaSi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbYeuThiches">
-            <EntityTypeMapping TypeName="NgheNhacModel.tbYeuThich">
-              <MappingFragment StoreEntitySet="tbYeuThich">
-                <ScalarProperty Name="MaYeuThich" ColumnName="MaYeuThich" />
-                <ScalarProperty Name="MaNhac" ColumnName="MaNhac" />
-                <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

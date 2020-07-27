@@ -29,5 +29,6 @@ namespace WebNhac.Models
         public virtual tbNguoiDung tbNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbTraLoi> tbTraLois { get; set; }
+        public virtual tbNhac tbNhac { get; set; }
     }
 }

@@ -20,44 +20,41 @@
         {
             @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group" style="width: 240%">
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @placeholder="Họ Tên" } })
-                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group" style="width: 240%">
+                    <div class="col-md-10">
+                        <input type="text" name="TenND" class="form-control" />
+                    </div>
+                </div>
 
-            <div class="form-group"style="width: 112%">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" , @placeholder="Email" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                <div class="form-group" style="width: 112%">
+                    <div class="col-md-10">
+                        <input type="text" name="TaiKhoan" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group" style="width: 125%">
+                    <div class="col-md-10">
+                        <input type="password" name="MatKhau" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group" style="width: 125%">
+                    <div class="col-md-10">
+                        <input type="password" name="NhapLaiMatKhau" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Đăng Ký" class="btn btn-default" style="margin-left: 12%" />
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group"style="width: 125%">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder="Mật Khẩu"  } })
-                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group" style="width: 125%">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NhapLaiMatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập Lại Mật Khẩu" } })
-                    @Html.ValidationMessageFor(model => model.NhapLaiMatKhau, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Đăng Ký" class="btn btn-default" style="margin-left: 12%" />
-                </div>
-            </div>
-        </div>
         }
     </div>
     <div class="clearfix"> </div>
 </div>
+     

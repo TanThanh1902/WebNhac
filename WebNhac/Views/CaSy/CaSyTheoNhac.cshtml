@@ -1,0 +1,19 @@
+﻿@using WebNhac.Models;
+@model List<tbCaSi>
+
+@{
+    int index = 1;
+}
+
+@foreach (var item in Model)
+{
+    if (index == Model.Count)
+    {
+        <a href="@Url.Action("BaiHatTheoCaSy", "BaiHat", new { id = item.MaCaSi})">@item.TenCaSi</a>
+    }
+    else
+    {
+        <a href="@Url.Action("BaiHatTheoCaSy", "BaiHat", new { id = item.MaCaSi})">@item.TenCaSi, </a>
+    }
+    index++;
+}

@@ -1,0 +1,87 @@
+﻿@using WebNhac.Models;
+@model tbNhac
+@{
+    ViewBag.Title = "Chi tiết bài hát: " + Model.TenBaiHat;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    HttpCookie cookie = Request.Cookies["id"];
+}
+<style>
+    .tuychon{
+        color: #337ab7;
+    }
+    .tuychon:hover{
+        color: blueviolet;
+    }
+</style>
+    <div style=" width: 100%;">
+        <b style="font-size: 25px; margin-left: 5%">@Model.TenBaiHat</b>
+        <b style="font-size: 25px; float: right; margin-right: 5%"><i class="fas fa-headphones">&nbsp;</i>@Model.LuotXem</b>
+        <center style="margin-top: 3%">
+            <div style="background-color: black; width: 90%;height: 300px;border-radius: 5px 5px 0px 0px;background-image: url('../../Image/pngtree-black-gold-beautiful-picture-goldcolorfultechnologybannerlight-and-shadow-image_62344.jpg');">
+                <img src="@Url.Content("~/Content/images/BaiHat/" + Model.HinhAnh)" alt="" style="width: 30%; height: 270px; float: left; margin-top: 1%; margin-left: 2%; box-shadow: 5px 5px 5px 5px" />
+                <div>
+                    <img src="@Url.Content("~/Contents/images/CaSy/" + Model.HinhAnh)" alt="" style="width: 80px; height: 80px; float: right; border-radius:100%;margin-right: 30%; margin-top: 3%" />
+
+                </div>
+            </div>
+            <div>
+                <audio controls="controls" style="width: 90%; background-color: black; border-radius: 0px 0px 33px 33px" autoplay="autoplay">
+                    <source src="~/Content/fileNhac/@Model.Nhac" type="audio/mpeg" style="" />
+                </audio>
+            </div>
+        </center>
+        <br />
+        <center>
+            @if (Request.Cookies["id"] != null)
+            {
+                <a href="@Url.Action("ThemVaoList", "BoSuuTap", new { @id = Model.MaNhac })" class="tuychon"> <i class="fas fa-heart" style="font-size: 25px;"><span style="font-size: 15px;">Thêm vào</span></i></a>
+            }
+            else
+            {
+                <a href="@Url.Action("TaiKhoan", "TaiKhoan")" class="tuychon"> <i class="fas fa-heart" style="font-size: 25px;"><span style="font-size: 15px;">Thêm vào</span></i></a>
+            }
+            &nbsp; &nbsp;
+            <a href="~/Content/fileNhac/@Model.Nhac" class="tuychon"> <i class="fas fa-download" style="font-size: 25px;"><span style="font-size: 15px;">Tải về</span></i></a>
+            &nbsp; &nbsp;
+            <a href="#" class="tuychon"> <i class="fas fa-share-alt" style="font-size: 25px;"><span style="font-size: 15px;">Chia sẻ</span></i></a>
+            <ul class="list-group" style="margin: 4%;">
+                <li class="list-group-item active" style="font-size: 20px">Lời bài hát: @Model.TenBaiHat<br />Nhạc sỹ: không có</li>
+                <li class="list-group-item" style="font-size: 15px;"><p>@Model.LoiBaiHat</p></li>
+                <hr />
+                <li class="list-group-item active" style="font-size: 20px">Bình luận</li>
+                <li class="list-group-item" style="width: 100%">
+                    @if (cookie != null)
+                    {
+                        <form class="row" action="@Url.Action("ThemBinhLuan", "BinhLuans")" method="post">
+                            <div class="col-sm-10" style="padding-right: 5px">
+                                <input type="text" style="width: 100%;height: 50px;" placeholder="Nhập bình luận" class="form-control" name="NoiDungBinhLuan"/>
+                                <input type="hidden" name="MaNhac" value="@Model.MaNhac" />
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 5px">
+                                <input type="submit" value="Bình luận" style="width: 100%; height: 50px" class="btn btn-danger" />
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <input type="submit" value="Đăng nhập để bình luận " style="width: 100%; height: 50px" class="btn btn-danger" />
+                    }
+                </li>
+                @foreach (var binhluan in Model.tbBinhLuans)
+                {
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <img src="~/Content/images/CaSy/yua_mikami.jpg" class=" img-circle" style="width: 100%; height: 110px" />
+                            </div>
+                            <ul class="col-sm-10" style="list-style-type: none">
+                                <li><b style="float: left; font-size: 20px">@binhluan.tbNguoiDung.TenND</b></li><br /><br /><br />
+                                <li><p style="float: left; font-size: 15px">@binhluan.NoiDungBinhLuan</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </center>
+    </div>
+

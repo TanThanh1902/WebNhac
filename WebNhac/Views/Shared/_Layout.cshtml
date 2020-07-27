@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Mucsic</title>
+    <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -22,9 +22,35 @@
     <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <!-- //fonts -->
     <link href="~/Content/Slider.css" rel="stylesheet" />
-    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" />
 </head>
 <body>
+    <style>
+        .menu {
+            width: 98%;
+            background: #337ab7;
+            height: 50px;
+        }
+
+            .menu span, a {
+                color: white;
+                font-size: 17px;
+                text-decoration: none !important;
+            }
+
+                .menu span a:hover {
+                    color: #ff4c4c;
+                }
+
+        .info_casy p a {
+            color: black;
+        }
+
+            .info_casy p a:hover {
+                color: purple;
+            }
+    </style>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -34,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/HienThi/Index"><h1 style="color: red; font-weight: bold"><i class="fa fa-music"></i>Phương Vy</h1></a>
+                <a class="navbar-brand" href="/Home/Index"><h1 style="color: red; font-weight: bold"><i class="fa fa-music">&nbsp;</i>MP3PRO</h1></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="top-search">
@@ -43,7 +69,10 @@
                         <input type="submit" value=" ">
                     </form>
                 </div>
-                @Html.Action("CongCu", "HienThi")
+                @if (ViewContext.RouteData.Values["Controller"].ToString() != "TaiKhoan")
+                {
+                    @Html.Action("Menu", "Home")
+                }
             </div>
             <div class="clearfix"> </div>
         </div>
@@ -58,45 +87,23 @@
         </div>
         <div class="drop-navigation drop-navigation">
             <ul class="nav nav-sidebar">
-                <li><a href="/HienThi/Index" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
-                <li><a href="@Url.Action("Index", "BoSuuTap")"><span class="fa fa-heart" aria-hidden="true"></span><b style="margin-left: 15%">&nbsp;</b>Yêu thích</a></li>
-                <li><a href="@Url.Action("BaiHatNgheNhieu", "DanhMucs")" class="user-icon"><span class="glyphicon glyphicon-home glyphicon-blackboard" aria-hidden="true"></span>Bài hát nghe nhiều</a></li>
-                <li><a href="@Url.Action("DSCaSy", "DanhMucs")" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass" aria-hidden="true"></span>Danh sách ca sỹ</a></li>
-                <li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>Danh sách thể loại<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-                <ul class="cl-effect-2">
-                    @Html.Action("DSTheLoaiN", "DanhMucs")
-                </ul>
-                <!-- script-for-menu -->
-                <script>
-                    $("li a.menu1").click(function () {
-                        $("ul.cl-effect-2").slideToggle(300, function () {
-                            // Animation complete.
-                        });
-                    });
-                </script>
-                <li><a href="#" class="menu"><span class="glyphicon glyphicon-film glyphicon-king" aria-hidden="true"></span>Top 100<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-                <ul class="cl-effect-1">
-                    @Html.Action("DSQuocGiaN", "DanhMucs")
-                </ul>
-                <!-- script-for-menu -->
-                <script>
-                    $("li a.menu").click(function () {
-                        $("ul.cl-effect-1").slideToggle(300, function () {
-                            // Animation complete.
-                        });
-                    });
-                </script>
-
-                <li><a href="news.html" class="news-icon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>Liên hệ</a></li>
+                <li><a href="/Home/Index" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang chủ</a></li>
+                @if (Request.Cookies["id"] != null)
+                {
+                    <li><a href="@Url.Action("BoSuuTapCaNhan", "BoSuuTap")"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><b style="margin-left: 15%">&nbsp;</b>Yêu thích</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("TaiKhoan", "TaiKhoan")"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><b style="margin-left: 15%">&nbsp;</b>Yêu thích</a></li>
+                }
+                <li><a href="@Url.Action("BaiHatNgheNhieu", "DanhMucs")" class="user-icon"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>Bài hát nghe nhiều</a></li>
+                <li><a href="#" class="menu1"><span class="glyphicon glyphicon-home fa fa-microphone" aria-hidden="true">&nbsp;</span>Ca sỹ<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+                @Html.Action("dsCaSy", "CaSy")
+                <li><a href="#" class="menu2"><span class="glyphicon glyphicon-home fa fa-list-alt" aria-hidden="true"></span>Chủ đề<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+                @Html.Action("dsChuDe", "ChuDe")
+                <li><a href="#" class="menu3"><span class="glyphicon glyphicon-home fa fa-globe" aria-hidden="true"></span>Quốc gia<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
+                @Html.Action("dsQuocGia", "QuocGia")
             </ul>
-            <!-- script-for-menu -->
-            <script>
-                $(".top-navigation").click(function () {
-                    $(".drop-navigation").slideToggle(300, function () {
-                        // Animation complete.
-                    });
-                });
-            </script>
             <div class="side-bottom">
                 <div class="side-bottom-icons">
                     <ul class="nav2">
@@ -107,8 +114,8 @@
                     </ul>
                 </div>
                 <div class="copyright">
-                    <p>Bản quyền thuộc Phương Vy -  &copy; 2019</p>
-                    <p>WebSite Học Tập</p>
+                    <p>Design By W3layout -  &copy; 2019</p>
+                    <p>WebSite Học Tập - Phạm Đức Hiếu</p>
                 </div>
             </div>
         </div>
@@ -119,34 +126,51 @@
                 <div>
                     @RenderBody()
                 </div>
-                <div class="recommended">
-                    @Html.Action("NgheGiHomNay", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("BaiHatNgheNhieu", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("DanhSachCaSy", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("DanhSachTheLoai", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("VietNamMoiNhat", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("HanQuocMoiNhat", "HienThi")
-                </div>
-                <div class="recommended">
-                    @Html.Action("AuMyMoiNhat", "HienThi")
-                </div>
+                @if (ViewContext.RouteData.Values["Controller"].ToString() != "TaiKhoan")
+                {
+                    <div class="recommended">
+                        @Html.Action("NgheGiHomNay", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("MoiPhatHanh", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("ThinhHanh", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("BaiHatNgheNhieu", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("NhacVietMoiNhat", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("NhacHanMoiNhat", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("NhacAuMyMoiNhat", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("Top100", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("DanhSachTheLoai", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("DanhSachCaSy", "Home")
+                    </div>
+                    <div class="recommended">
+                        @Html.Action("DanhSachQuocGia", "Home")
+                    </div>
+                }
             </div>
-            <div class="col-sm-1 show-grid-left main-grids">
-                @Html.Action("BXHVietNam", "HienThi")
-                @Html.Action("BXHHanQuoc", "HienThi")
-                @Html.Action("BXHAuMy", "HienThi")
-            </div>
-
+            @if (ViewContext.RouteData.Values["Controller"].ToString() != "TaiKhoan")
+            {
+                <div class="col-sm-1 show-grid-left main-grids">
+                    @Html.Action("BXHVietNam", "Home")
+                    @Html.Action("BXHHanQuoc", "Home")
+                    @Html.Action("BXHAuMy", "Home")
+                </div>
+            }
             <div class="clearfix"> </div>
         </div>
         <!-- footer -->
@@ -208,7 +232,6 @@
     <link href="~/Content/web/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
     <script src="~/Content/web/js/jquery.magnific-popup.js" type="text/javascript"></script>
     <!--//pop-up-box -->
-
     <script>
         $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
@@ -225,9 +248,68 @@
 
         });
     </script>
+    <!-- script-for-menu -->
+    <script>
+        $("li a.menu1").click(function () {
+            if (document.getElementById("chude_slide_down").style.display != "none") {
+                $("ul.cl-effect-2").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            }
+            if (document.getElementById("quocgia_slide_down").style.display != "none") {
+                $("ul.cl-effect-3").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            } $("ul.cl-effect-1").slideToggle(300, function () {
+                // Animation complete.
+            });
+        });
+    </script>
+    <!-- script-for-menu -->
+    <script>
+        $("li a.menu2").click(function () {
+            if (document.getElementById("casy_slide_down").style.display != "none") {
+                $("ul.cl-effect-1").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            }
+            if (document.getElementById("quocgia_slide_down").style.display != "none") {
+                $("ul.cl-effect-3").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            } $("ul.cl-effect-2").slideToggle(300, function () {
+                // Animation complete.
+            });
+        });
+    </script>
+    <!-- script-for-menu -->
+    <script>
+        $("li a.menu3").click(function () {
+            if (document.getElementById("casy_slide_down").style.display != "none") {
+                $("ul.cl-effect-1").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            }
+            if (document.getElementById("chude_slide_down").style.display != "none") {
+                $("ul.cl-effect-2").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            } $("ul.cl-effect-3").slideToggle(300, function () {
+                // Animation complete.
+            });
+        });
+    </script>
+    <!-- script-for-menu -->
+    <script>
+        $(".top-navigation").click(function () {
+            $(".drop-navigation").slideToggle(300, function () {
+                // Animation complete.
+            });
+        });
+    </script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 </body>
 </html>

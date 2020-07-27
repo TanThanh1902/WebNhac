@@ -1,57 +1,84 @@
 ﻿@using WebNhac.Models;
 @model tbNguoiDung
 @{
-    tbNguoiDung ses = (tbNguoiDung)Session["flag"];
+    HttpCookie cookie = Request.Cookies["id"];
 }
 <div class="header-top-right">
     <div class="signin">
-        @if (Session["flag"] != null)
+        @if (cookie != null)
         {
-            <b>Chào: @ses.TenND</b>
-            <a href="@Url.Action("DangXuat", "DangNhap")">Đăng xuất</a>
-            if (Session["Admin"] != null)
-            {
-
-            }
+            NgheNhacEntities db = new NgheNhacEntities();
+            int id = int.Parse(cookie.Value.ToString());
+            tbNguoiDung nd = db.tbNguoiDungs.Find(id);
+            <b style="font-size: 15px">Chào: @nd.TenND</b>
+            <a href="@Url.Action("DangXuat", "TaiKhoan")">Đăng xuất&nbsp;</a>
         }
         else
         {
-            <a href="#small-dialog2" class="play-icon popup-with-zoom-anim">Đăng nhập</a>
+            <a href="@Url.Action("TaiKhoan", "TaiKhoan")" class="btn btn-primary">Đăng nhập</a>
         }
-        <div id="small-dialog2" class="mfp-hide">
-            <h3>Đăng nhập</h3>
-            <div class="social-sits">
-                <div class="facebook-button">
-                    <a href="#">Đăng nhập bằng Facebook</a>
-                </div>
-                <div class="chrome-button">
-                    <a href="#">Đăng nhập bằng Google &nbsp;&nbsp;&nbsp;</a>
-                </div>
-                <div class="button-bottom">
-                    <p>Bạn chưa có tài khoản? <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Đăng ký</a></p>
-                </div>
-            </div>
-            <div class="signup">
-                <form action="@Url.Action("DangNhap", "DangNhap")" method="post">
-                    <input type="text" class="email" placeholder="Tên đăng nhập" name="txtTaiKhoan" required />
-                    <input type="password" class="email" placeholder="Mật khẩu" name="txtMatKhau" required />
-                    <button class="btn btn-danger">ĐĂNG NHẬP</button>
-                    <div class="forgot">
-                        <a href="#">Quên mật khẩu ?</a>
-                    </div>
-                </form>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-
-    </div>
-    <div class="signin">
-        @if (ses == null)
-        {
-            <a href="#small-dialog" class="play-icon popup-with-zoom-anim">Đăng ký</a>
-        }
-        @Html.Action("DangKy", "TaiKhoan")
     </div>
     <div class="clearfix"> </div>
 </div>
 
+@if (Session["tb"] != null && cookie != null)
+{
+    if (Session["tb"].ToString() == "DangKy")
+    {
+        <script type="text/javascript">
+            $(window).on('load', function () {
+                $('#tbdk').modal('show');
+            });
+        </script>
+        Session["tb"] = null;
+    }
+    else if (Session["tb"].ToString() == "DangNhap")
+    {
+        <script type="text/javascript">
+            $(window).on('load', function () {
+                $('#tbdn').modal('show');
+            });
+        </script>
+        Session["tb"] = null;
+    }
+}
+<!-- Dang nhap -->
+<div class="modal fade" id="tbdn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thoông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Chào mừng bạn quay lại MP3PRO</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dang ki -->
+<div class="modal fade" id="tbdk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Chào mừng bạn đến với MP3PRO</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

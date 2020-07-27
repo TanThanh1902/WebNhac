@@ -27,7 +27,8 @@ namespace WebNhac.Models
     
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tbAlbum> tbAlbums { get; set; }
-        public virtual DbSet<tbBanner> tbBanners { get; set; }
+        public virtual DbSet<tbAlbumCaNhan> tbAlbumCaNhans { get; set; }
+        public virtual DbSet<tbAlbumDSNhac> tbAlbumDSNhacs { get; set; }
         public virtual DbSet<tbBinhLuan> tbBinhLuans { get; set; }
         public virtual DbSet<tbCaSi> tbCaSis { get; set; }
         public virtual DbSet<tbNguoiDung> tbNguoiDungs { get; set; }
@@ -36,6 +37,5 @@ namespace WebNhac.Models
         public virtual DbSet<tbTheLoai> tbTheLoais { get; set; }
         public virtual DbSet<tbTraLoi> tbTraLois { get; set; }
         public virtual DbSet<tbTrinhBay> tbTrinhBays { get; set; }
-        public virtual DbSet<tbYeuThich> tbYeuThiches { get; set; }
     }
 }

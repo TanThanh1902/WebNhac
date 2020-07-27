@@ -1,7 +1,0 @@
-﻿@using Music_pv.Models;
-@model List<QuocGia>
-
-@foreach (var item in Model)
-{
-    <li><a href="@Url.Action("Top100QG", "DanhMucs", new { @id = item.IDQuocGia })">@item.TenQuocGia</a></li>
-}

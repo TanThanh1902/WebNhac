@@ -1,0 +1,35 @@
+﻿@using WebNhac.Models;
+@model List<tbNhac>
+
+@{ 
+    int i = 1;
+}
+<ul style="list-style-type: none">
+    <div class="col-md-3" style="width: 512.333333% !important;">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active" style="font-size: 15px;">
+                @ViewBag.bhx
+            </a>
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("ChiTietBaiHat", "BaiHat", new { id = item.MaNhac})" class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <img src="@Url.Content("~/Content/images/BaiHat/" + item.HinhAnh)" style="width: 50%; height: 60px; border-radius: 100%" />
+                            <br />
+                            <span style="color: black; font-size: 13px; font-weight: bold">
+                                @item.TenBaiHat
+                            </span>
+                        </div>
+                        <div class="col-sm-4">
+                            <li style="float: right; color: #dbdbdb; font-size: 20px; font-weight: bold;"><h1>#@i</h1></li>
+                        </div>
+                    </div>
+                </a>
+                i++;
+            }
+        </div>
+    </div>
+</ul>
+
+

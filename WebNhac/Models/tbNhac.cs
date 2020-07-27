@@ -17,9 +17,10 @@ namespace WebNhac.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbNhac()
         {
-            this.tbBanners = new HashSet<tbBanner>();
+            this.tbAlbumCaNhans = new HashSet<tbAlbumCaNhan>();
+            this.tbAlbumDSNhacs = new HashSet<tbAlbumDSNhac>();
             this.tbTrinhBays = new HashSet<tbTrinhBay>();
-            this.tbYeuThiches = new HashSet<tbYeuThich>();
+            this.tbBinhLuans = new HashSet<tbBinhLuan>();
         }
     
         public int MaNhac { get; set; }
@@ -35,12 +36,14 @@ namespace WebNhac.Models
         public Nullable<System.DateTime> NgayDang { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbBanner> tbBanners { get; set; }
+        public virtual ICollection<tbAlbumCaNhan> tbAlbumCaNhans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbAlbumDSNhac> tbAlbumDSNhacs { get; set; }
         public virtual tbQuocGia tbQuocGia { get; set; }
         public virtual tbTheLoai tbTheLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbTrinhBay> tbTrinhBays { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbYeuThich> tbYeuThiches { get; set; }
+        public virtual ICollection<tbBinhLuan> tbBinhLuans { get; set; }
     }
 }
