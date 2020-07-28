@@ -18,7 +18,7 @@ namespace WebNhac.Models
         public tbNguoiDung()
         {
             this.tbBinhLuans = new HashSet<tbBinhLuan>();
-            this.tbTraLois = new HashSet<tbTraLoi>();
+            this.tbAlbumCaNhans = new HashSet<tbAlbumCaNhan>();
         }
     
         public int MaND { get; set; }
@@ -32,6 +32,6 @@ namespace WebNhac.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbBinhLuan> tbBinhLuans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbTraLoi> tbTraLois { get; set; }
+        public virtual ICollection<tbAlbumCaNhan> tbAlbumCaNhans { get; set; }
     }
 }

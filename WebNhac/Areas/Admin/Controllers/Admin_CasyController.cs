@@ -137,8 +137,12 @@ namespace WebNhac.Areas.Admin.Controllers
             foreach (var item in tbCaSi.tbTrinhBays)
             {
                 // xoa anh cu
-                string fullPath_tbnhac = Request.MapPath("~/Content/images/BaiHat/" + item.tbNhac.HinhAnh);
-                System.IO.File.Delete(fullPath_tbnhac);
+                string fullPath_img = Request.MapPath("~/Content/images/BaiHat/" + item.tbNhac.Nhac);
+                System.IO.File.Delete(fullPath_img);
+                // xoa nhac cu
+                string fullPath_file = Request.MapPath("~/Content/fileNhac/" + item.tbNhac.Nhac);
+                System.IO.File.Delete(fullPath_file);
+                db.tbTrinhBays.Remove(item);
                 db.tbNhacs.Remove(item.tbNhac);
             }
             db.SaveChanges();

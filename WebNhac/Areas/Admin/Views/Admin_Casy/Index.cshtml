@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<WebNhac.Models.tbCaSi>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lí ca sỹ";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     int index = (Model.PageNumber - 1) * 10 + 1;
     string xoa = "xoacasy";

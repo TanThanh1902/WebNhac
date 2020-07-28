@@ -1,52 +1,80 @@
-﻿@model IEnumerable<WebNhac.Models.tbBinhLuan>
-
+﻿@model PagedList.IPagedList<WebNhac.Models.tbBinhLuan>
+@using PagedList.Mvc;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lí bình luận";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int index = (Model.PageNumber - 1) * 10 + 1;
+    string xoa = "xoabinhluan";
 }
 
-<h2>Index</h2>
+<div class="content">
+    <div class="container-fluid">
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    STT
+                </td>
+                <th>
+                    <span>Tên người bình luận</span>
+                </th>
+                <th>
+                    <span>Nội dung</span>
+                </th>
+                <th>
+                    <span>Ngày đăng</span>
+                </th>
+                <th>Tùy chọn</th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NoiDungBinhLuan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbNguoiDung.TenND)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbNhac.TenBaiHat)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @index
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.tbNguoiDung.TenND)
+                    </th>
+                    <th>
+                        @(item.NoiDungBinhLuan.Length > 50 ? item.NoiDungBinhLuan.Substring(0, 50) : item.NoiDungBinhLuan)
+                    </th>
+                    <th>
+                        @item.NgayDang.Value.ToLongDateString()
+                    </th>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#@xoa@item.MaBinhLuan"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                index++;
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoiDungBinhLuan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayDang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbNguoiDung.TenND)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbNhac.TenBaiHat)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaBinhLuan }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaBinhLuan }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaBinhLuan })
-        </td>
-    </tr>
-}
+                <!-- Modal -->
+                <div class="modal fade" id="@xoa@item.MaBinhLuan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel" style="color: red">Xác nhận</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn chắc chắn muỗn xóa bình luận này ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 60%">Đóng</button>
+                                <a href="@Url.Action("DeleteConfirmed", "Admin_BinhLuan", new { id = item.MaBinhLuan})" type="button" class="btn btn-danger" style="background: #fc727a; color: white">Xác nhận</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
 
-</table>
+        </table>
+        <center>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </center>
+    </div>
+</div>

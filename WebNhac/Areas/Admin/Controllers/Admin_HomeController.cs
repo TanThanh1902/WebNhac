@@ -36,7 +36,6 @@ namespace WebNhac.Areas.Admin.Controllers
         public PartialViewResult thongke()
         {
             ViewBag.thongkebaihat = db.tbNhacs.Count();
-            ViewBag.thongkealbum = db.tbAlbums.Count();
             ViewBag.thongkecasy = db.tbCaSis.Count();
             ViewBag.thongkethanhvien = db.tbNguoiDungs.Count();
             return PartialView();

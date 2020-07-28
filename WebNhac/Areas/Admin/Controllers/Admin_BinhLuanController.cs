@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebNhac.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WebNhac.Areas.Admin.Controllers
 {
@@ -15,10 +17,10 @@ namespace WebNhac.Areas.Admin.Controllers
         private NgheNhacEntities db = new NgheNhacEntities();
 
         // GET: Admin/Admin_BinhLuan
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var tbBinhLuans = db.tbBinhLuans.Include(t => t.tbNguoiDung).Include(t => t.tbNhac);
-            return View(tbBinhLuans.ToList());
+            IPagedList<tbBinhLuan> tbBinhLuans = db.tbBinhLuans.OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, 20);
+            return View(tbBinhLuans);
         }
 
         // GET: Admin/Admin_BinhLuan/Details/5
@@ -99,7 +101,7 @@ namespace WebNhac.Areas.Admin.Controllers
         }
 
         // GET: Admin/Admin_BinhLuan/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             if (id == null)
             {
@@ -110,15 +112,6 @@ namespace WebNhac.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tbBinhLuan);
-        }
-
-        // POST: Admin/Admin_BinhLuan/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbBinhLuan tbBinhLuan = db.tbBinhLuans.Find(id);
             db.tbBinhLuans.Remove(tbBinhLuan);
             db.SaveChanges();
             return RedirectToAction("Index");

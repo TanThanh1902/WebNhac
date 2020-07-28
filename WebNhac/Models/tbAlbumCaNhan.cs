@@ -20,5 +20,6 @@ namespace WebNhac.Models
         public Nullable<int> MaNguoiDung { get; set; }
     
         public virtual tbNhac tbNhac { get; set; }
+        public virtual tbNguoiDung tbNguoiDung { get; set; }
     }
 }

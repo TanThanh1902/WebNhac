@@ -55,17 +55,6 @@ namespace WebNhac.Controllers
             IPagedList<tbNhac> nhacs = db.tbNhacs.Where(t => t.MaTheLoai == id).OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
             return View("dsNhac", nhacs);
         }
-        public ActionResult BaiHatTheoAlbum(int? id, int? page)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ViewBag.ketqua = "Có " + db.tbAlbumDSNhacs.Where(t => t.MaAlbum == id).Count() + " bài hát";
-            ViewBag.Title = "Album: " + db.tbAlbums.Find(id).TenAlbum;
-            IPagedList<tbNhac> nhacs = db.tbAlbumDSNhacs.Where(t => t.MaAlbum == id).Select(t => t.tbNhac).ToList().OrderByDescending(t => t.NgayDang).ToPagedList(page ?? 1, PAGE_SIZE);
-            return View("dsNhac", nhacs);
-        }
         public ActionResult ChiTietBaiHat(int? id)
         {
             if(id == null)

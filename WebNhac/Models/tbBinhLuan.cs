@@ -14,12 +14,6 @@ namespace WebNhac.Models
     
     public partial class tbBinhLuan
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbBinhLuan()
-        {
-            this.tbTraLois = new HashSet<tbTraLoi>();
-        }
-    
         public int MaBinhLuan { get; set; }
         public string NoiDungBinhLuan { get; set; }
         public Nullable<System.DateTime> NgayDang { get; set; }
@@ -28,7 +22,5 @@ namespace WebNhac.Models
     
         public virtual tbNguoiDung tbNguoiDung { get; set; }
         public virtual tbNhac tbNhac { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbTraLoi> tbTraLois { get; set; }
     }
 }

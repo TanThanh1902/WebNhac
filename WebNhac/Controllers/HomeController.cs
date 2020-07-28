@@ -67,12 +67,6 @@ namespace Web_Nhac.Controllers
             List<tbNhac> nhacs = db.tbNhacs.Where(n => n.MaQuocGia == 3).OrderByDescending(n => n.LuotXem).Take(8).ToList();
             return PartialView("dsNhac", nhacs);
         }
-        public PartialViewResult Album()
-        {
-            ViewBag.tus = "US - UK";
-            List<tbAlbum> albums = db.tbAlbums.Take(8).ToList();
-            return PartialView(albums);
-        }
         // BXH âm nhạc
         public PartialViewResult BXHVietNam()
         {

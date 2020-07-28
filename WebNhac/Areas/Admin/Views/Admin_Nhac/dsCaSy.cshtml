@@ -1,0 +1,7 @@
+﻿@using WebNhac.Models;
+@model List<tbCaSi>
+
+@foreach(var item in Model)
+{
+    <option value="@item.MaCaSi">@item.TenCaSi</option>
+}

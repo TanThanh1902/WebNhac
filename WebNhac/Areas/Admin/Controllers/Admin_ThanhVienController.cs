@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebNhac.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WebNhac.Areas.Admin.Controllers
 {
@@ -15,9 +17,9 @@ namespace WebNhac.Areas.Admin.Controllers
         private NgheNhacEntities db = new NgheNhacEntities();
 
         // GET: Admin/Admin_ThanhVien
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.tbNguoiDungs.ToList());
+            return View(db.tbNguoiDungs.OrderBy(t => t.MaND).ToPagedList(page ?? 1, 20));
         }
 
         // GET: Admin/Admin_ThanhVien/Details/5
@@ -90,7 +92,7 @@ namespace WebNhac.Areas.Admin.Controllers
         }
 
         // GET: Admin/Admin_ThanhVien/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             if (id == null)
             {
@@ -101,15 +103,15 @@ namespace WebNhac.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tbNguoiDung);
-        }
-
-        // POST: Admin/Admin_ThanhVien/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbNguoiDung tbNguoiDung = db.tbNguoiDungs.Find(id);
+            foreach(var item in tbNguoiDung.tbBinhLuans)
+            {
+                db.tbBinhLuans.Remove(item);
+            }
+            foreach(var item in tbNguoiDung.tbAlbumCaNhans)
+            {
+                db.tbAlbumCaNhans.Remove(item);
+            }
+            db.SaveChanges();
             db.tbNguoiDungs.Remove(tbNguoiDung);
             db.SaveChanges();
             return RedirectToAction("Index");
